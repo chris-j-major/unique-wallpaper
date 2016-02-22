@@ -4,11 +4,11 @@ var Color = require("../../core/color");
 module.exports = {
   tags:["shape"],
   create:function create(struct,stack,color){
-    return new Square(struct,stack,color);
+    return new Circle(struct,stack,color);
   }
 }
 
-function Square( struct , stack , color ){
+function Circle( struct , stack , color ){
   this.parent = stack;
   this.size = struct.random.range( 2 , 0.4*Math.min(stack.width,stack.height) )
   this.width = this.size
@@ -18,12 +18,11 @@ function Square( struct , stack , color ){
   this.fill = color || struct.pickColors(1)[0].toHex();
 }
 
-Square.prototype.build = function(xml){
-  return xml.ele('rect',{
-    x:this.x,
-    y:this.y,
-    width:this.size,
-    height:this.size,
+Circle.prototype.build = function(xml){
+  return xml.ele('circle',{
+    cx:this.x,
+    cy:this.y,
+    r:this.size,
     fill:this.fill,
   });
 }

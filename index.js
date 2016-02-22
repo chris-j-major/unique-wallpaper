@@ -6,6 +6,8 @@ parts.loadPart("blockFill");
 parts.loadPart("splitMask");
 parts.loadPart("scatterShapes");
 parts.loadPart("square");
+parts.loadPart("triangle");
+parts.loadPart("circle");
 
 var argv = require('minimist')(process.argv.slice(2));
 
@@ -16,4 +18,14 @@ if ( argv.key ){
   var stream = fs.createWriteStream( argv.dest || "out.svg" , options );
   stream.write(xml);
   stream.end();
+}
+if ( argv.count ){
+var options = { encoding: argv.encoding||'utf8' };
+  for ( var n=0 ; n<parseInt(argv.count) ; n++ ){
+    var struct = core.process(n,argv.width||800,argv.height||600,parts);
+    var xml = struct.build( false )
+    var stream = fs.createWriteStream( "out/"+n+".svg" , options );
+    stream.write(xml);
+    stream.end();
+  }
 }

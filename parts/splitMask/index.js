@@ -14,15 +14,18 @@ function SplitMask( struct , stack ){
   this.height = stack.height;
 
   var blend = struct.random.range(40,49.999);
+  var grey = struct.random.range(0,0.3);
+  var grey2 = 1-grey;
   var aPercent = blend+"%";
   var bPercent = (100-blend)+"%";
 
+
   var rangeA = {};
-  rangeA[aPercent] = Color.black;
-  rangeA[bPercent] = Color.white;
+  rangeA[aPercent] = Color.grey(grey);
+  rangeA[bPercent] = Color.grey(grey2);
   var rangeB = {};
-  rangeB[aPercent] = Color.white;
-  rangeB[bPercent] = Color.black;
+  rangeB[aPercent] = Color.grey(grey2);
+  rangeB[bPercent] = Color.grey(grey);
 
   this.a = stack.pickPart("block").create( struct , this );
   this.b = stack.pickPart("block").create( struct , this );

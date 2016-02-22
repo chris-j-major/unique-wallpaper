@@ -7,6 +7,10 @@ function Color(hue,sat,lightness){
 Color.white = new Color(0.0,0.0,1.0);
 Color.black = new Color(0.0,0.0,0.0);
 
+Color.grey = function(n){
+  return new Color(0.0,0.0,n);
+}
+
 Color.prototype.toHex = function(){
   var componets = hslToRgb(this.h,this.s,this.l);
   return "#"+twoDigitHex(componets[0])+twoDigitHex(componets[1])+twoDigitHex(componets[2])
