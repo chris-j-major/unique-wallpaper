@@ -3,6 +3,7 @@ var core = require('./core');
 var fs = require('fs');
 
 parts.loadPart("blockFill");
+parts.loadPart("blockShapes");
 parts.loadPart("splitMask");
 parts.loadPart("scatterShapes");
 parts.loadPart("square");

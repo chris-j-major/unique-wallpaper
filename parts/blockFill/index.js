@@ -1,7 +1,7 @@
 var svgParts = require("../svgParts");
 
 module.exports = {
-  tags:["block","base","root"],
+  tags:["block","base"],
   create:function create(struct,stack){
     return new BlockFill(struct,stack);
   }

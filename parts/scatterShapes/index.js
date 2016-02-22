@@ -1,7 +1,7 @@
 var svgParts = require("../svgParts");
 
 module.exports = {
-  tags:["block","base","root"],
+  tags:["overlay"],
   create:function create(struct,stack){
     return new ScatterShapes(struct,stack);
   }
