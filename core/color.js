@@ -9,7 +9,7 @@ Color.black = new Color(0.0,0.0,0.0);
 
 Color.prototype.toHex = function(){
   var componets = hslToRgb(this.h,this.s,this.l);
-  return twoDigitHex(componets[0])+twoDigitHex(componets[1])+twoDigitHex(componets[2])
+  return "#"+twoDigitHex(componets[0])+twoDigitHex(componets[1])+twoDigitHex(componets[2])
 }
 Color.prototype.toStopStyle = function(){
   var componets = hslToRgb(this.h,this.s,this.l);

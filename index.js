@@ -4,6 +4,8 @@ var fs = require('fs');
 
 parts.loadPart("blockFill");
 parts.loadPart("splitMask");
+parts.loadPart("scatterShapes");
+parts.loadPart("square");
 
 var argv = require('minimist')(process.argv.slice(2));
 
