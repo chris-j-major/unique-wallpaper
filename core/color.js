@@ -4,6 +4,9 @@ function Color(hue,sat,lightness){
   this.l = lightness||0.5;
 }
 
+Color.white = new Color(0.0,0.0,1.0);
+Color.black = new Color(0.0,0.0,0.0);
+
 Color.prototype.toHex = function(){
   var componets = hslToRgb(this.h,this.s,this.l);
   return twoDigitHex(componets[0])+twoDigitHex(componets[1])+twoDigitHex(componets[2])

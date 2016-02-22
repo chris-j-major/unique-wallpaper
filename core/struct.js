@@ -23,11 +23,14 @@ Struct.prototype.build = function( pretty ){
   xml.att('width', this.width );
   xml.att('height', this.height );
   xml.att('xmlns',"http://www.w3.org/2000/svg");
+  xml.att('xmlns:xlink',"http://www.w3.org/1999/xlink")
   xml.att("version","1.1");
   // build the definitions
   var xmlDefs = xml.ele("defs");
   for ( var id in this.defs ){
-    this.defs[id].build( xmlDefs );
+    var def = this.defs[id];
+    var e = def.build( xmlDefs );
+    e.att("id",def.id);
   }
   // now build the structyre
   this.root.build(xml);

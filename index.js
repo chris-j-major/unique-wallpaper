@@ -3,6 +3,7 @@ var core = require('./core');
 var fs = require('fs');
 
 parts.loadPart("blockFill");
+parts.loadPart("splitMask");
 
 var argv = require('minimist')(process.argv.slice(2));
 
