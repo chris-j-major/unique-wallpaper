@@ -13,18 +13,24 @@ function SplitMask( struct , stack ){
   this.width = stack.width;
   this.height = stack.height;
 
+  var blend = struct.random.range(40,49.999);
+  var aPercent = blend+"%";
+  var bPercent = (100-blend)+"%";
+
+  var rangeA = {};
+  rangeA[aPercent] = Color.black;
+  rangeA[bPercent] = Color.white;
+  var rangeB = {};
+  rangeB[aPercent] = Color.white;
+  rangeB[bPercent] = Color.black;
+
   this.a = stack.pickPart("block").create( struct , this );
   this.b = stack.pickPart("block").create( struct , this );
 
-  var gradientA = new svgParts.LinearGradient({
-    x1:"0%",y1:"100%",x2:"100%",y2:"0%"
-  },{"49%":Color.black,"51%":Color.white});
-  this.gradientAId = struct.addDef( gradientA );
+  var gradient = svgParts.LinearGradient.buildPoints( struct.random );
 
-  var gradientB = new svgParts.LinearGradient({
-    x1:"0%",y1:"100%",x2:"100%",y2:"0%"
-  },{"49%":Color.white,"51%":Color.black});
-  this.gradientBId = struct.addDef( gradientB );
+  this.gradientAId = struct.addDef( new svgParts.LinearGradient(gradient,rangeA) );
+  this.gradientBId = struct.addDef( new svgParts.LinearGradient(gradient,rangeB) );
 
   this.defA = struct.addDef( this.a );
   this.defB = struct.addDef( this.b );
@@ -41,6 +47,17 @@ function SplitMask( struct , stack ){
 
   this.maskAid = struct.addDef( maskA );
   this.maskBid = struct.addDef( maskB );
+}
+
+
+function buildGradientPoints( random ){
+  var f = Math.floor(random.float() * 100);
+  var f2 = Math.floor(100 - f);
+  if ( random.bool() ){
+    return {x1:"0%",y1:f+"%",x2:"100%",y2:f2+"%"}
+  }else{
+    return {x1:f+"%",y1:"0%",x2:f2+"%",y2:"100%"}
+  }
 }
 
 SplitMask.prototype.build = function(xml){

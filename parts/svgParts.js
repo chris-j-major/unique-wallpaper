@@ -13,6 +13,16 @@ LinearGradient.prototype.build = function linearGradientBuild( xml ){
   }
   return lg;
 }
+LinearGradient.buildPoints = function buildPoints( random ){
+  var f = Math.floor(random.float() * 100);
+  var f2 = Math.floor(100 - f);
+  if ( random.bool() ){
+    return {x1:"0%",y1:f+"%",x2:"100%",y2:f2+"%"}
+  }else{
+    return {x1:f+"%",y1:"0%",x2:f2+"%",y2:"100%"}
+  }
+}
+
 function Rect(opts){
   this.opts = opts;
   this.id = "not added yet!"

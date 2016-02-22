@@ -17,9 +17,8 @@ function BlockFill( struct , stack ){
     var percent = Math.floor(spacing + ((id / colors.length) * range));
     stops[ percent+"%" ] = colors[id];
   }
-  var gradient = new svgParts.LinearGradient({
-    x1:"0%",y1:"0%",x2:"100%",y2:"100%"
-  },stops);
+  var gradient = new svgParts.LinearGradient(
+    svgParts.LinearGradient.buildPoints( struct.random ) ,stops);
   this.gradientId = struct.addDef( gradient );
   this.parent = stack;
 }
