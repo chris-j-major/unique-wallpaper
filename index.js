@@ -7,10 +7,15 @@ parts.loadPart("blockShapes");
 parts.loadPart("blockSplit");
 parts.loadPart("splitMask");
 parts.loadPart("scatterShapes");
+
 parts.loadPart("polygon");
 parts.loadPart("stars");
 parts.loadPart("circle");
+
 parts.loadPart("midToneHilight");
+parts.loadPart("monochrome");
+parts.loadPart("bichrome");
+parts.loadPart("trichrome");
 
 var argv = require('minimist')(process.argv.slice(2));
 

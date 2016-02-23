@@ -1,7 +1,7 @@
 function Color(hue,sat,lightness){
-  this.h = hue;
-  this.s = sat||1.0;
-  this.l = lightness||0.5;
+  this.h = hue % 1.0;
+  this.s = (sat||1.0) % 1.0;
+  this.l = (lightness||0.5) % 1.0;
 }
 
 Color.white = new Color(0.0,0.0,1.0);
