@@ -16,7 +16,7 @@ function ScatterShapes( struct , stack ){
   var shape = struct.pickPart("shape");
   var colors = struct.pickColors( shapes );
   for ( var id=0; id<shapes;id++){
-    this.shapes[id] = shape.create(struct,this,colors[id].toHex());
+    this.shapes[id] = shape.create(struct,this,{color:colors[id].toHex()});
   }
 }
 

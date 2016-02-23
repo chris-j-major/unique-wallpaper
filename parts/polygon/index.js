@@ -7,25 +7,26 @@ for ( var sides=3; sides < 8; sides ++ ){
 function buildShape(sides){
   return {
     tags:["shape"],
-    create:function create(struct,stack,color){
-      return new Polygon(struct,stack,sides,color);
+    create:function create(struct,stack,details){
+      return new Polygon(struct,stack,sides,details);
     }
   }
 }
 
 module.exports = shapes;
 
-function Polygon( struct , stack , sides , color ){
+function Polygon( struct , stack , sides , details ){
+  if ( ! details ) details = {};
   this.parent = stack;
-  this.size = struct.random.range( 2 , 0.4*Math.min(stack.width,stack.height) )
-  this.x = (stack.width-this.size) * struct.random.float();
-  this.y = (stack.height-this.size) * struct.random.float();
+  this.size = details.size||struct.random.range( 2 , 0.4*Math.min(stack.width,stack.height) )
+  this.x = details.x||(stack.width-this.size) * struct.random.float();
+  this.y = details.y||(stack.height-this.size) * struct.random.float();
   this.orient = struct.random.float();
   this.points = [];
   for ( var n=0;n<sides;n++){
     this.points.push( this.genPoint(n,sides) );
   }
-  this.fill = color || struct.pickColors(1)[0].toHex();
+  this.fill = details.color || struct.pickColors(1)[0].toHex();
 }
 Polygon.prototype.genPoint = function(n,sides){
   var theta = this.orient + (n * (Math.PI*2/sides));
