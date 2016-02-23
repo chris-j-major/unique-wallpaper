@@ -15,7 +15,11 @@ function addPart( part ){
 module.exports = {
   loadPart:function loadPart( part ){
     var p = require("./"+part);
-    addPart(p);
+    if ( p.forEach ){
+      p.forEach( addPart );
+    }else{
+      addPart(p);
+    }
   },
   getAllByTag:function getAllByTag(tag){
     if ( !byTag[tag] ) throw("No items found with tag '"+tag+"'")

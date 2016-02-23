@@ -6,8 +6,8 @@ parts.loadPart("blockFill");
 parts.loadPart("blockShapes");
 parts.loadPart("splitMask");
 parts.loadPart("scatterShapes");
-parts.loadPart("square");
-parts.loadPart("triangle");
+parts.loadPart("polygon");
+parts.loadPart("stars");
 parts.loadPart("circle");
 parts.loadPart("midToneHilight");
 
