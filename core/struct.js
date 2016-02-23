@@ -10,6 +10,7 @@ function Struct(key,width,height,parts){
   this.defs = [];
   this.defId = 1;
   // this must be last...
+  this.pallete = this.pickPart("pallete").create( this , this );
   this.root = this.pickPart("root").create( this , this );
 }
 Struct.prototype.addDef = function(def){
@@ -43,11 +44,11 @@ Struct.prototype.pickPart = function( tag ){
   return set[index];
 }
 Struct.prototype.pickColors = function( number ){
-  var offset = 1/(this.random.float() * 0.8 * number)
+  var offset = 1/number;
   var start = this.random.float();
   var retval = [];
   for ( var index = 0 ; index < number ; index++){
-    retval[index] = new Color( (start + (offset * index)) % 1.0 );
+    retval[index] = this.pallete.getColor( (start + (offset * index)) % 1.0 );
   }
   return retval;
 }

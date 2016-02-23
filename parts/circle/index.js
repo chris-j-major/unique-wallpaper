@@ -9,7 +9,7 @@ module.exports = {
 }
 
 function Circle( struct , stack , color ){
-  this.parent = stack;
+  this.parent = stack
   this.size = struct.random.range( 2 , 0.4*Math.min(stack.width,stack.height) )
   this.width = this.size
   this.height = this.size;

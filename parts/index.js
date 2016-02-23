@@ -18,6 +18,7 @@ module.exports = {
     addPart(p);
   },
   getAllByTag:function getAllByTag(tag){
+    if ( !byTag[tag] ) throw("No items found with tag '"+tag+"'")
     return byTag[tag];
   }
 };

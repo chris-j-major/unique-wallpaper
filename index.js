@@ -9,6 +9,7 @@ parts.loadPart("scatterShapes");
 parts.loadPart("square");
 parts.loadPart("triangle");
 parts.loadPart("circle");
+parts.loadPart("midToneHilight");
 
 var argv = require('minimist')(process.argv.slice(2));
 
