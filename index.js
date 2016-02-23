@@ -9,6 +9,7 @@ parts.loadPart("splitMask");
 
 parts.loadPart("scatterShapes");
 parts.loadPart("orderedShapes");
+parts.loadPart("gridShapes");
 
 parts.loadPart("polygon");
 parts.loadPart("stars");
