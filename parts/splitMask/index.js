@@ -28,27 +28,18 @@ function SplitMask( struct , stack ){
   rangeB[bPercent] = Color.grey(grey);
 
   this.a = stack.pickPart("block").create( struct , this );
-  this.b = stack.pickPart("block").create( struct , this );
-
-  var gradient = svgParts.LinearGradient.buildPoints( struct.random );
-
-  this.gradientAId = struct.addDef( new svgParts.LinearGradient(gradient,rangeA) );
-  this.gradientBId = struct.addDef( new svgParts.LinearGradient(gradient,rangeB) );
-
   this.defA = struct.addDef( this.a );
+  this.b = stack.pickPart("block").create( struct , this );
   this.defB = struct.addDef( this.b );
 
-  var maskA = new svgParts.Mask( {}, [new svgParts.Rect({
-    width:stack.width, height:stack.height,
-    fill:"url(#"+this.gradientAId+")"
-  })]);
+  var gradient = svgParts.LinearGradient.buildPoints( struct.random );
+  this.gradientBId = struct.addDef( new svgParts.LinearGradient(gradient,rangeB) );
 
   var maskB = new svgParts.Mask( {}, [new svgParts.Rect({
     width:stack.width, height:stack.height,
     fill:"url(#"+this.gradientBId+")"
   })]);
 
-  this.maskAid = struct.addDef( maskA );
   this.maskBid = struct.addDef( maskB );
 }
 
@@ -65,7 +56,7 @@ function buildGradientPoints( random ){
 
 SplitMask.prototype.build = function(xml){
   var g = xml.ele("g")
-  g.ele("use").att("xlink:href","#"+this.defA).att("mask","url(#"+this.maskAid+")");
+  g.ele("use").att("xlink:href","#"+this.defA);
   g.ele("use").att("xlink:href","#"+this.defB).att("mask","url(#"+this.maskBid+")");
   return g;
 }
