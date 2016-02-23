@@ -1,13 +1,17 @@
 {
   "name": "unique-wallpaper",
   "version": "0.0.0",
-  "description": "",
+  "description": "Generate procedural wallpapers",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chris-j-major/unique-wallpaper.git"
+  },
+  "author": "Chris Major",
+  "license": "MIT",
   "dependencies": {
     "minimist": "^1.2.0",
     "xmlbuilder": "^4.2.1"
