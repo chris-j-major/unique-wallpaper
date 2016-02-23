@@ -16,5 +16,9 @@ SeededRandom.prototype.range = function(min,max){
   var n = min + f * (max - min);
   return n;
 }
+SeededRandom.prototype.choose = function(choices){
+  var id = Math.floor( this.float() * choices.length );
+  return choices[id];
+}
 
 module.exports = SeededRandom;

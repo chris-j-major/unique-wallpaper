@@ -4,6 +4,7 @@ var fs = require('fs');
 
 parts.loadPart("blockFill");
 parts.loadPart("blockShapes");
+parts.loadPart("blockSplit");
 parts.loadPart("splitMask");
 parts.loadPart("scatterShapes");
 parts.loadPart("polygon");
