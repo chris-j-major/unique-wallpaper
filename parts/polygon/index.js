@@ -18,6 +18,7 @@ module.exports = shapes;
 function Polygon( struct , stack , sides , details ){
   if ( ! details ) details = {};
   this.parent = stack;
+  this.sides = sides;
   this.size = details.size||struct.random.range( 2 , 0.4*Math.min(stack.width,stack.height) )
   this.x = details.x||(stack.width-this.size) * struct.random.float();
   this.y = details.y||(stack.height-this.size) * struct.random.float();
@@ -39,4 +40,8 @@ Polygon.prototype.build = function(xml){
     points:this.points.join(" "),
     fill:this.fill
   });
+}
+
+Polygon.prototype.describe = function(s){
+  return s+"Polygon("+this.sides+")\n";
 }

@@ -24,3 +24,7 @@ BlockShapes.prototype.build = function(xml){
   this.inner.build(g);
   return g;
 }
+
+BlockShapes.prototype.describe = function(s){
+  return s+"BlockShapes\n" + this.inner.describe(" "+s);
+}

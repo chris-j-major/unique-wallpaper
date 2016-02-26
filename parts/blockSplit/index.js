@@ -33,3 +33,7 @@ BlockSplit.prototype.build = function(xml){
   this.innerb.build(b);
   return g;
 }
+
+BlockSplit.prototype.describe = function(s){
+  return s+"BlockSplit\n" + this.a.describe(s+" ")+s+"---"+this.b.describe(s+" ");
+}

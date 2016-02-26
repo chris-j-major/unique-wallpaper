@@ -38,6 +38,9 @@ Struct.prototype.build = function( pretty ){
   // return
   return xml.end({ pretty: pretty });
 }
+Struct.prototype.describe = function(){
+  return "ROOT\n"+this.root.describe(" ")+"PALLETE\n"+this.pallete.describe(" ");
+}
 Struct.prototype.pickPart = function( tag ){
   var set = this.parts.getAllByTag( tag );
   var index = Math.floor(this.random.range(0,set.length));

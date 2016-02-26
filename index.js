@@ -4,23 +4,29 @@ module.exports = function (opts){
   var parts = require('./parts');
   var core = require('./core');
 
+  // block layouts
   parts.loadPart("blockFill");
   parts.loadPart("blockShapes");
-  parts.loadPart("blockSplit");
-  parts.loadPart("splitMask");
+  //parts.loadPart("blockSplit");
+  //parts.loadPart("splitMask");
+  parts.loadPart("blockLayout");
 
+  // shape patterns
   parts.loadPart("scatterShapes");
   parts.loadPart("orderedShapes");
   parts.loadPart("gridShapes");
+  parts.loadPart("overlayLines");
 
+  // shapes
   parts.loadPart("polygon");
   parts.loadPart("stars");
   parts.loadPart("circle");
+  parts.loadPart("lines");
 
+  // Pallete scheems
   parts.loadPart("midToneHilight");
   parts.loadPart("monochrome");
   parts.loadPart("bichrome");
-  parts.loadPart("trichrome");
 
   return new Unique(parts,core,opts);
 }
@@ -44,6 +50,11 @@ Builder.prototype.size = function(width,height){
   this.width = width;
   this.height = height;
   return this;
+};
+Builder.prototype.describe = function(){
+  var struct = this.unique.core.process(this.key,this.width,this.height,this.unique.parts);
+  console.log(struct.describe);
+  return struct.describe();
 };
 Builder.prototype.writeXML = function( pretty ){
   var struct = this.unique.core.process(this.key,this.width,this.height,this.unique.parts);

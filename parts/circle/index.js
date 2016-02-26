@@ -27,3 +27,7 @@ Circle.prototype.build = function(xml){
     fill:this.fill,
   });
 }
+
+Circle.prototype.describe = function(s){
+  return s+"Circle\n";
+}

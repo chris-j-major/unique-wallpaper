@@ -27,3 +27,7 @@ ScatterShapes.prototype.build = function(xml){
   }
   return g;
 }
+
+ScatterShapes.prototype.describe = function(s){
+  return s+"ScatterShapes\n"
+}

@@ -21,4 +21,7 @@ function MidToneHilights( struct , stack ){
   this.addRange( 0.4 , new Color(highlightHue,1.0,highLightness) );
 }
 
+MidToneHilights.prototype.describe = function(s){
+  return s+"PALLETE [MidToneHilgihts]\n";
+}
 Pallete.extend(MidToneHilights)

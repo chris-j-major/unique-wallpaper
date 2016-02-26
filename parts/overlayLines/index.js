@@ -3,17 +3,17 @@ var svgParts = require("../svgParts");
 module.exports = {
   tags:["overlay"],
   create:function create(struct,stack){
-    return new OrderedShapes(struct,stack);
+    return new OverlayLines(struct,stack);
   }
 }
 
-function OrderedShapes( struct , stack ){
+function OverlayLines( struct , stack ){
   this.parent = stack;
   this.width = stack.width;
   this.height = stack.height;
-  var shapes = Math.floor(struct.random.range(2,40));
+  var shapes = Math.floor(struct.random.range(20,90));
   this.shapes = [];
-  var shape = struct.pickPart("shape");
+  var line = struct.pickPart("line");
   var colors = struct.pickColors( Math.floor(struct.random.range(1,4)) );
 
   var theta = struct.random.float();
@@ -23,20 +23,17 @@ function OrderedShapes( struct , stack ){
   var y = struct.random.float() * this.height;
   var thetaDelta = struct.random.range(0.01,0.2);
   var dDelta = struct.random.range(0.01,0.4);
-  var size = struct.random.range(0.1,0.8) * dscale;
-  var sizeDelta = struct.random.range(0.9,1.1);
 
   for ( var id=0; id<shapes;id++){
     var tx = x + (Math.sin(theta)*d*dscale);
     var ty = y + (Math.cos(theta)*d*dscale);
     theta = theta + thetaDelta;
     d = d + dDelta;
-    size = size * sizeDelta;
-    this.shapes[id] = shape.create(struct,this,{color:colors[id%colors.length].toHex(),x:tx,y:ty,size:size});
+    this.shapes.push( line.create(struct,this,{color:colors[id%colors.length].toHex(),x1:tx,y1:ty,x2:x,y2:y}));
   }
 }
 
-OrderedShapes.prototype.build = function(xml){
+OverlayLines.prototype.build = function(xml){
   var g = xml.ele("g")
   for ( var id in this.shapes ){
     this.shapes[id].build(g);
@@ -44,6 +41,6 @@ OrderedShapes.prototype.build = function(xml){
   return g;
 }
 
-OrderedShapes.prototype.describe = function(s){
-  return s+"OrderedShapes\n";
+OverlayLines.prototype.describe = function(s){
+  return s+"OverlayLines\n";
 }

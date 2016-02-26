@@ -20,4 +20,8 @@ function Bichrome( struct , stack ){
   }
 }
 
+Bichrome.prototype.describe = function(){
+  return "PALLETE [Bichrome]\n";
+}
+
 Pallete.extend(Bichrome)

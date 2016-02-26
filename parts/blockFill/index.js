@@ -29,3 +29,7 @@ BlockFill.prototype.build = function(xml){
     .att("height",this.parent.height)
     .att("fill","url(#"+this.gradientId+")");
 }
+
+BlockFill.prototype.describe = function(spacing){
+  return spacing+"BlockFill\n";
+}

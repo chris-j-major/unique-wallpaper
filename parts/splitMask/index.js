@@ -60,3 +60,6 @@ SplitMask.prototype.build = function(xml){
   g.ele("use").att("xlink:href","#"+this.defB).att("mask","url(#"+this.maskBid+")");
   return g;
 }
+SplitMask.prototype.describe = function(s){
+  return s+"SplitMask\n"+this.a.describe(" "+s)+s+"--"+this.b.describe(" "+s);
+}

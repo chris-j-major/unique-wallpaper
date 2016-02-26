@@ -19,4 +19,7 @@ function Monchrome( struct , stack ){
   }
 }
 
+Monchrome.prototype.describe = function(s){
+  return s+"PALLETE [Monochrome]\n";
+}
 Pallete.extend(Monchrome)

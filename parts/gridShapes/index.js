@@ -39,3 +39,7 @@ GridShapes.prototype.build = function(xml){
   }
   return g;
 }
+
+GridShapes.prototype.describe = function(s){
+  return s+"GridShapes\n";
+}
