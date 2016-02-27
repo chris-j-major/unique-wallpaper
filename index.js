@@ -20,15 +20,13 @@ module.exports = function (opts){
 
   // shape patterns
   parts.loadPart("scatterShapes");
-//  parts.loadPart("orderedShapes");
-//  parts.loadPart("gridShapes");
+  parts.loadPart("gridShapes");
   parts.loadPart("overlayLines");
 
   // shapes
   parts.loadPart("polygon");
   parts.loadPart("stars");
   parts.loadPart("circle");
-  parts.loadPart("lines");
 
   // Pallete scheems
   parts.loadPart("midToneHilight");
