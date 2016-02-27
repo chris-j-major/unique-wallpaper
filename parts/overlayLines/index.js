@@ -16,20 +16,19 @@ function OverlayLines( struct , stack ){
   var line = struct.pickPart("line");
   var colors = struct.pickColors( Math.floor(struct.random.range(1,4)) );
 
-  var theta = struct.random.float();
-  var d = 0;
-  var dscale = (this.width + this.height) / 4;
-  var x = struct.random.float() * this.width;
-  var y = struct.random.float() * this.height;
-  var thetaDelta = struct.random.range(0.01,0.2);
-  var dDelta = struct.random.range(0.01,0.4);
+  var pointA = struct.pickPart("pointset").create( struct , stack );;
+  var pointB = struct.pickPart("dynamic-pointset").create( struct , stack );;
+  var pointC = struct.pickPart("dynamic-pointset").create( struct , stack );;
 
   for ( var id=0; id<shapes;id++){
-    var tx = x + (Math.sin(theta)*d*dscale);
-    var ty = y + (Math.cos(theta)*d*dscale);
-    theta = theta + thetaDelta;
-    d = d + dDelta;
-    this.shapes.push( line.create(struct,this,{color:colors[id%colors.length].toHex(),x1:tx,y1:ty,x2:x,y2:y}));
+    var a = pointA.getPoint(id);
+    var b = pointB.getPoint(id);
+    var c = pointC.getPoint(id);
+    this.shapes.push( line.create(struct,this,{color:colors[id%colors.length].toHex(),
+      x1:a.x,y1:a.y,
+      x2:b.x,y2:b.y,
+      x3:c.x,y3:c.y}
+    ));
   }
 }
 

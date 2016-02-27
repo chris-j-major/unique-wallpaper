@@ -1,4 +1,11 @@
 
+require("./parts/pointset/linear");
+require("./parts/pointset/random");
+require("./parts/pointset/spiral");
+require("./parts/pointset/static");
+
+require("./parts/lines")
+
 module.exports = function (opts){
   if ( ! opts ) opts = {};
   var parts = require('./parts');
@@ -13,8 +20,8 @@ module.exports = function (opts){
 
   // shape patterns
   parts.loadPart("scatterShapes");
-  parts.loadPart("orderedShapes");
-  parts.loadPart("gridShapes");
+//  parts.loadPart("orderedShapes");
+//  parts.loadPart("gridShapes");
   parts.loadPart("overlayLines");
 
   // shapes

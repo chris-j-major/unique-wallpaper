@@ -20,5 +20,8 @@ SeededRandom.prototype.choose = function(choices){
   var id = Math.floor( this.float() * choices.length );
   return choices[id];
 }
+SeededRandom.prototype.spawn = function(choices){
+  return new SeededRandom( this.range(0,233280) );
+}
 
 module.exports = SeededRandom;

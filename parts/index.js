@@ -21,6 +21,7 @@ module.exports = {
       addPart(p);
     }
   },
+  addPart:addPart,
   getAllByTag:function getAllByTag(tag){
     if ( !byTag[tag] ) throw("No items found with tag '"+tag+"'")
     return byTag[tag];
