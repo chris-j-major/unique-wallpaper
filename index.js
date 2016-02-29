@@ -6,15 +6,11 @@ require("./parts/lines");
 require("./parts/blocks");
 require("./parts/palletes");
 require("./parts/shapes");
+require("./parts/overlays");
 
 
 module.exports = function (opts){
   if ( ! opts ) opts = {};
-
-  // shape patterns
-  parts.loadPart("scatterShapes");
-  //parts.loadPart("gridShapes");
-  parts.loadPart("overlayLines");
 
   return new Unique(parts,core,opts);
 }
