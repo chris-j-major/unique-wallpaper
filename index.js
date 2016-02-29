@@ -1,37 +1,20 @@
+var parts = require('./parts');
+var core = require('./core');
 
-require("./parts/pointset/linear");
-require("./parts/pointset/random");
-require("./parts/pointset/spiral");
-require("./parts/pointset/static");
+require("./parts/pointset");
+require("./parts/lines");
+require("./parts/blocks");
+require("./parts/palletes");
+require("./parts/shapes");
 
-require("./parts/lines")
 
 module.exports = function (opts){
   if ( ! opts ) opts = {};
-  var parts = require('./parts');
-  var core = require('./core');
-
-  // block layouts
-  parts.loadPart("blockFill");
-  parts.loadPart("blockShapes");
-  //parts.loadPart("blockSplit");
-  //parts.loadPart("splitMask");
-  parts.loadPart("blockLayout");
 
   // shape patterns
   parts.loadPart("scatterShapes");
   //parts.loadPart("gridShapes");
   parts.loadPart("overlayLines");
-
-  // shapes
-  parts.loadPart("polygon");
-  parts.loadPart("stars");
-  parts.loadPart("circle");
-
-  // Pallete scheems
-  parts.loadPart("midToneHilight");
-  parts.loadPart("monochrome");
-  parts.loadPart("bichrome");
 
   return new Unique(parts,core,opts);
 }

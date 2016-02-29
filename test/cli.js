@@ -3,6 +3,8 @@ var argv = require('minimist')(process.argv.slice(2));
 
 var unique = require("../");
 
+console.log(unique().parts.counts);
+
 if ( argv.key ){
   var image = unique().start(argv.key).size(argv.key,argv.width||800,argv.height||600);
   var xml = image.writeXML( true /* pretty */ )

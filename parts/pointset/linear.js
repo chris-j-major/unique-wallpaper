@@ -1,10 +1,8 @@
-var parts = require("../../parts");
-
-parts.addPart({
+module.exports = {
   tags:["pointset","dynamic-pointset"],
   create:function create(struct,stack,details){
     return new LinearPointset(struct,stack,details);
-  }});
+  }}
 
 function LinearPointset(struct,parent,details){
   if (!details) details = {};

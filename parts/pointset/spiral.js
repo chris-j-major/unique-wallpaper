@@ -1,10 +1,8 @@
-var parts = require("../../parts");
-
-parts.addPart({
+module.exports = {
   tags:["pointset","dynamic-pointset"],
   create:function create(struct,stack,details){
     return new SpiralPointset(struct,stack,details);
-  }});
+  }};
 
 function SpiralPointset(struct,parent,details){
   if (!details) details = {};

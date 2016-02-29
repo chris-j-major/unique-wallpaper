@@ -1,14 +1,12 @@
-var parts = require("../../parts");
-
-parts.addPart({
+module.exports = {
   tags:["pointset","dynamic-pointset"],
   create:function create(struct,stack,details){
     return new RandomPointset(struct,stack,details);
-  }});
+  }}
 
 function RandomPointset(struct,stack,details){
   if (!details) details = {};
-  if ( !details.length ) details.length = 10; 
+  if ( !details.length ) details.length = 10;
   this.random = struct.random.spawn();
   this.stack = stack;
 }
