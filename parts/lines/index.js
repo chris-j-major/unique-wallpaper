@@ -7,6 +7,9 @@ parts.addPart({
   tags:["line"],
   create:function create(struct,stack,details){
     return new Line(struct,stack,details,3);
+  },
+  describe:function(s){
+    return s+"Line(5)\n";
   }
 })
 
@@ -14,6 +17,9 @@ parts.addPart({
   tags:["line"],
   create:function create(struct,stack,details){
     return new Line(struct,stack,details,8);
+  },
+  describe:function(s){
+    return s+"Line(8)\n";
   }
 })
 
@@ -21,6 +27,9 @@ parts.addPart({
   tags:["line"],
   create:function create(struct,stack,details){
     return new Curve(struct,stack,details,2);
+  },
+  describe:function(s){
+    return s+"Curve(2)\n";
   }
 })
 
@@ -28,6 +37,9 @@ parts.addPart({
   tags:["line"],
   create:function create(struct,stack,details){
     return new Curve(struct,stack,details,8);
+  },
+  describe:function(s){
+    return s+"Curve(8)\n";
   }
 })
 

@@ -17,7 +17,7 @@ if ( argv.count ){
   for ( var n=0 ; n<parseInt(argv.count) ; n++ ){
     var image = u.start(n).size(argv.width||800,argv.height||600);
     var xml = image.writeXML( true /* pretty */ )
-    console.log( image.describe() );
+    console.log( "\n\n"+n+"\n"+image.describe() );
     var stream = fs.createWriteStream( "out/"+n+".svg" , options );
     stream.write(xml);
     stream.end();

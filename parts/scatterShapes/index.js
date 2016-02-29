@@ -14,10 +14,10 @@ function ScatterShapes( struct , stack ){
   var shapes = Math.floor(struct.random.range(2,40));
   this.shapes = [];
   var shape = struct.pickPart("shape");
-  var pointset = struct.pickPart("dynamic-pointset").create( struct , stack );
+  this.pointset = struct.pickPart("dynamic-pointset").create( struct , stack );
   var colors = struct.pickColors( shapes );
   for ( var id=0; id<shapes;id++){
-    var p = pointset.getPoint(id);
+    var p = this.pointset.getPoint(id);
     this.shapes[id] = shape.create(struct,this,{x:p.x,y:p.y,color:colors[id].toHex()});
   }
 }
@@ -31,5 +31,5 @@ ScatterShapes.prototype.build = function(xml){
 }
 
 ScatterShapes.prototype.describe = function(s){
-  return s+"ScatterShapes\n"
+  return s+"ScatterShapes\n"+this.pointset.describe(s+" ");
 }

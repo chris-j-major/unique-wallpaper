@@ -16,11 +16,30 @@ function BlockLayout( struct , stack ){
   this.width = stack.width;
   this.height = stack.height;
 
-  this.sections = [
-    this.createSection( {x:0 , y:0 , width:this.width * ONE_OVER_PHI , height:this.height*ONE_OVER_PHI } , struct ),
-    this.createSection( {x:this.width * ONE_OVER_PHI , y:0 , width:this.width * ONE_OTHER , height:this.height*ONE_OVER_PHI } , struct ),
-    this.createSection( {x:0 , y:this.height * ONE_OVER_PHI , width:this.width  , height:this.height*ONE_OTHER } , struct )
-  ];
+  this.split = struct.random.choose(["H","V","HV"]);
+
+  switch(this.split){
+    case "H":
+      this.sections = [
+        this.createSection( {x:0 , y:0 , width:this.width * ONE_OVER_PHI , height:this.height } , struct ),
+        this.createSection( {x:this.width * ONE_OVER_PHI , y:0 , width:this.width * ONE_OTHER , height:this.height } , struct )
+      ];
+    break;
+    case "V":
+      this.sections = [
+        this.createSection( {x:0 , y:0 , width:this.width , height:this.height*ONE_OVER_PHI } , struct ),
+        this.createSection( {x:0 , y:this.height * ONE_OVER_PHI , width:this.width  , height:this.height*ONE_OTHER } , struct )
+      ];
+    break;
+    case "HV":
+      this.sections = [
+        this.createSection( {x:0 , y:0 , width:this.width * ONE_OVER_PHI , height:this.height*ONE_OVER_PHI } , struct ),
+        this.createSection( {x:this.width * ONE_OVER_PHI , y:0 , width:this.width * ONE_OTHER , height:this.height*ONE_OVER_PHI } , struct ),
+        this.createSection( {x:0 , y:this.height * ONE_OVER_PHI , width:this.width  , height:this.height*ONE_OTHER } , struct )
+      ];
+    break;
+  }
+
 }
 
 BlockLayout.prototype.createSection = function( opt , struct ){
@@ -36,7 +55,7 @@ BlockLayout.prototype.build = function(xml){
 }
 
 BlockLayout.prototype.describe = function(spacing){
-  return spacing+"BlockLayot\n" + this.sections.map(function(s){
+  return spacing+"BlockLayout("+this.split+")\n" + this.sections.map(function(s){
     return s.inner.describe(spacing+" ")
-  }).join();
+  }).join("");
 }

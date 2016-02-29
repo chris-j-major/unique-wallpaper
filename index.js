@@ -20,7 +20,7 @@ module.exports = function (opts){
 
   // shape patterns
   parts.loadPart("scatterShapes");
-  parts.loadPart("gridShapes");
+  //parts.loadPart("gridShapes");
   parts.loadPart("overlayLines");
 
   // shapes

@@ -8,11 +8,12 @@ parts.addPart({
 
 function SpiralPointset(struct,parent,details){
   if (!details) details = {};
+  if ( !details.length ) details.length = 10;
   this.x = details.x || (parent.width * struct.random.float());
   this.y = details.y || (parent.height * struct.random.float());
   this.theta = details.theta || (struct.random.float()*Math.PI*2);
   this.tdelta = details.tdelta || ((struct.random.float()-0.5) * 0.2 );
-  this.dist = 10 / (0.0001+struct.random.float()*struct.random.float());
+  this.dist = ((parent.height+parent.width)/details.length) * struct.random.float();
 }
 
 SpiralPointset.prototype.getPoint = function(n){
@@ -21,4 +22,7 @@ SpiralPointset.prototype.getPoint = function(n){
     x:this.x+(Math.sin(t)*this.dist*n),
     y:this.x+(Math.cos(t)*this.dist*n)
   }
+}
+SpiralPointset.prototype.describe = function(s){
+  return s+"SpiralPointset("+this.x+","+this.y+","+this.theta+","+this.tdelta+","+this.dist+")\n"
 }
