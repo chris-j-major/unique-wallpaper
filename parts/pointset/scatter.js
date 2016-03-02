@@ -10,7 +10,7 @@ function ScatterPointset(struct,parent,details){
   this.random = struct.random.spawn();
   this.x = details.x || (parent.width * struct.random.float());
   this.y = details.y || (parent.height * struct.random.float());
-  this.dist = ((parent.height+parent.width)/details.length) * struct.random.float();
+  this.dist = ((parent.height+parent.width)/details.length) * struct.random.range(0.1,1.4);
 }
 
 ScatterPointset.prototype.getPoint = function(n){

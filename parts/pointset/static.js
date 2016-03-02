@@ -6,7 +6,6 @@ module.exports = {
 
 function StaticPointset(struct,parent,details){
   if (!details) details = {};
-  if ( !details.length ) details.length = 10;
   this.x = details.x || (parent.width * struct.random.float());
   this.y = details.y || (parent.height * struct.random.float());
 }

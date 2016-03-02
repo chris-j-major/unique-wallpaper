@@ -14,7 +14,7 @@ function ScatterShapes( struct , stack ){
   var shapes = Math.floor(struct.random.range(2,40));
   this.shapes = [];
   var shape = struct.pickPart("shape");
-  this.pointset = struct.pickPart("dynamic-pointset").create( struct , stack );
+  this.pointset = struct.pickPart("dynamic-pointset").create( struct , stack , {length:shapes} );
   var colors = struct.pickColors( shapes );
   for ( var id=0; id<shapes;id++){
     var p = this.pointset.getPoint(id);

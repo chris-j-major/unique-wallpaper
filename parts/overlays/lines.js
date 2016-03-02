@@ -16,9 +16,9 @@ function OverlayLines( struct , stack ){
   this.line = struct.pickPart("line");
   var colors = struct.pickColors( Math.floor(struct.random.range(1,4)) );
 
-  this.pointA = struct.pickPart("pointset").create( struct , stack );;
-  this.pointB = struct.pickPart("dynamic-pointset").create( struct , stack );;
-  this.pointC = struct.pickPart("dynamic-pointset").create( struct , stack );;
+  this.pointA = struct.pickPart("pointset").create( struct , stack , {length:shapes} );
+  this.pointB = struct.pickPart("dynamic-pointset").create( struct , stack , {length:shapes} );
+  this.pointC = struct.pickPart("dynamic-pointset").create( struct , stack , {length:shapes} );
 
   for ( var id=0; id<shapes;id++){
     var a = this.pointA.getPoint(id);

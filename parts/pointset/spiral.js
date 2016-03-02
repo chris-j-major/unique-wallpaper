@@ -11,7 +11,7 @@ function SpiralPointset(struct,parent,details){
   this.y = details.y || (parent.height * struct.random.float());
   this.theta = details.theta || (struct.random.float()*Math.PI*2);
   this.tdelta = details.tdelta || ((struct.random.float()-0.5) * 0.2 );
-  this.dist = ((parent.height+parent.width)/details.length) * struct.random.float();
+  this.dist = ((parent.height+parent.width)/details.length) * struct.random.range(0.1,1.6);
 }
 
 SpiralPointset.prototype.getPoint = function(n){

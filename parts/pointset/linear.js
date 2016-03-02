@@ -10,7 +10,7 @@ function LinearPointset(struct,parent,details){
   this.x = details.x || (parent.width * struct.random.float());
   this.y = details.y || (parent.height * struct.random.float());
   this.theta = details.theta || (struct.random.float()*Math.PI*2);
-  this.dist = ((parent.height+parent.width)/details.length) * struct.random.float();
+  this.dist = ((parent.height+parent.width)/details.length) * struct.random.range(0.1,1.2);
   this.dx = Math.sin(this.theta)*this.dist;
   this.dy = Math.cos(this.theta)*this.dist;
 }

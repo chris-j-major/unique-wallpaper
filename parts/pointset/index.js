@@ -5,3 +5,4 @@ parts.addPart( require('./random') );
 parts.addPart( require('./spiral') );
 parts.addPart( require('./static') );
 parts.addPart( require('./scatter') );
+parts.addPart( require('./grid') );

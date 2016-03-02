@@ -37,7 +37,6 @@ Builder.prototype.size = function(width,height){
 };
 Builder.prototype.describe = function(){
   var struct = this.unique.core.process(this.key,this.width,this.height,this.unique.parts);
-  console.log(struct.describe);
   return struct.describe();
 };
 Builder.prototype.writeXML = function( pretty ){

@@ -6,12 +6,16 @@ var unique = require("../");
 console.log(unique().parts.counts);
 
 if ( argv.key ){
-  var image = unique().start(argv.key).size(argv.key,argv.width||800,argv.height||600);
+  var image = unique()
+    .start(argv.key)
+    .size(argv.width||800,
+          argv.height||600);
   var xml = image.writeXML( true /* pretty */ )
   var options = { encoding: argv.encoding||'utf8' };
   var stream = fs.createWriteStream( argv.dest || "out.svg" , options );
   stream.write(xml);
   stream.end();
+  console.log( "\n\nimage seed: "+argv.key+"\n"+image.describe() );
 }
 if ( argv.count ){
   var u = unique();
@@ -19,7 +23,6 @@ if ( argv.count ){
   for ( var n=0 ; n<parseInt(argv.count) ; n++ ){
     var image = u.start(n).size(argv.width||800,argv.height||600);
     var xml = image.writeXML( true /* pretty */ )
-    console.log( "\n\n"+n+"\n"+image.describe() );
     var stream = fs.createWriteStream( "out/"+n+".svg" , options );
     stream.write(xml);
     stream.end();
