@@ -10,7 +10,7 @@ module.exports = {
 function BlockFill( struct , stack ){
   var stops = {};
   var stopCount = Math.floor(struct.random.range(2,4));
-  var colors = struct.pickColors(stopCount);
+  var colors = stack.pallete.pickColors(struct.random,stopCount);
   var spacing = struct.random.float() * 48.0;
   var range = 100.0 - (spacing*2);
   for ( var id=0 ; id<colors.length;id ++){
@@ -21,6 +21,7 @@ function BlockFill( struct , stack ){
     svgParts.LinearGradient.buildPoints( struct.random ) ,stops);
   this.gradientId = struct.addDef( gradient );
   this.parent = stack;
+  this.pallete = stack.pallete;
 }
 
 BlockFill.prototype.build = function(xml){

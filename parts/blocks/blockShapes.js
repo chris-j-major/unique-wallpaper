@@ -11,7 +11,8 @@ function BlockShapes( struct , stack ){
   this.parent = stack;
   this.width = stack.width;
   this.height = stack.height;
-  this.color = struct.pickColors(1)[0].toHex();
+  this.color = stack.pallete.pickColor(struct.random).toHex();
+  this.pallete = stack.pallete.without( this.color );
   this.inner = struct.pickPart("overlay").create(struct,this);
 }
 

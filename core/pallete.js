@@ -1,5 +1,6 @@
 function Pallete(){
-  Pallete.create();
+  this.range = [];
+  this.total = 0;
 }
 
 Pallete.extend = function(obj){
@@ -29,6 +30,35 @@ Pallete.prototype.getColor = function( randomFloat ){
     }
   }
   return null;
+}
+
+Pallete.prototype.pickColors = function( random , number ){
+  var offset = 1/number;
+  var start = random.float();
+  var retval = [];
+  for ( var index = 0 ; index < number ; index++){
+    retval[index] = this.getColor( (start + (offset * index)) % 1.0 );
+  }
+  return retval;
+}
+
+Pallete.prototype.pickColor = function( random ){
+  return this.getColor( random.float() );
+}
+
+Pallete.prototype.without = function( colors ){
+  if ( ! colors.push ){
+    colors = [colors]; // make it an array
+  }
+  var p = new Pallete();
+  for ( var id in this.range ){
+    var n = this.range[id];
+    if ( colors.indexOf( n.color.toHex() ) == -1 ){
+      p.addRange( n.weight , n.color );
+    }
+  }
+  //console.log(p,colors,this.range);
+  return p;
 }
 
 module.exports = Pallete;

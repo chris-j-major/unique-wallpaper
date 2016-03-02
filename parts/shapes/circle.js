@@ -16,7 +16,7 @@ function Circle( struct , stack , details ){
   this.height = this.size;
   this.x = details.x || (stack.width-this.size) * struct.random.float();
   this.y = details.y || (stack.height-this.size) * struct.random.float();
-  this.fill = details.color || struct.pickColors(1)[0].toHex();
+  this.fill = details.color || stack.pallete.pickColor(struct.random).toHex();
 }
 
 Circle.prototype.build = function(xml){

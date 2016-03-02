@@ -46,14 +46,5 @@ Struct.prototype.pickPart = function( tag ){
   var index = Math.floor(this.random.range(0,set.length));
   return set[index];
 }
-Struct.prototype.pickColors = function( number ){
-  var offset = 1/number;
-  var start = this.random.float();
-  var retval = [];
-  for ( var index = 0 ; index < number ; index++){
-    retval[index] = this.pallete.getColor( (start + (offset * index)) % 1.0 );
-  }
-  return retval;
-}
 
 module.exports = Struct;

@@ -51,7 +51,7 @@ function Line( struct , stack , details, width  ){
   this.y1 = details.y1 || (stack.height-this.size) * struct.random.float();
   this.x2 = details.x2 || (stack.width-this.size) * struct.random.float();
   this.y2 = details.y2 || (stack.height-this.size) * struct.random.float();
-  this.fill = details.color || struct.pickColors(1)[0].toHex();
+  this.fill = details.color || stack.pallete.pickColor(struct).toHex();
 }
 
 Line.prototype.build = function(xml){
@@ -76,7 +76,7 @@ function Curve( struct , stack , details , width){
   this.y2 = details.y2 || (stack.height-this.size) * struct.random.float();
   this.x3 = details.x3 || (stack.width-this.size) * struct.random.float();
   this.y3 = details.y3 || (stack.height-this.size) * struct.random.float();
-  this.fill = details.color || struct.pickColors(1)[0].toHex();
+  this.fill = details.color || stack.pallete.pickColor(struct.random).toHex();
 }
 
 Curve.prototype.build = function(xml){

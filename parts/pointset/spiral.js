@@ -1,5 +1,5 @@
 module.exports = {
-  tags:["pointset","dynamic-pointset"],
+  tags:["pointset","dynamic-pointset","simple-pointset"],
   create:function create(struct,stack,details){
     return new SpiralPointset(struct,stack,details);
   }};

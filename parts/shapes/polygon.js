@@ -27,7 +27,7 @@ function Polygon( struct , stack , sides , details ){
   for ( var n=0;n<sides;n++){
     this.points.push( this.genPoint(n,sides) );
   }
-  this.fill = details.color || struct.pickColors(1)[0].toHex();
+  this.fill = details.color || stack.pallete.pickColor(struct.random).toHex();
 }
 Polygon.prototype.genPoint = function(n,sides){
   var theta = this.orient + (n * (Math.PI*2/sides));
