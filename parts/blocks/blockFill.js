@@ -9,8 +9,8 @@ module.exports = {
 
 function BlockFill( struct , stack ){
   var stops = {};
-  var stopCount = Math.floor(struct.random.range(2,4));
-  var colors = stack.pallete.pickColors(struct.random,stopCount);
+  this.stopCount = Math.floor(struct.random.range(2,3));
+  var colors = stack.pallete.pickColors(struct.random,this.stopCount);
   var spacing = struct.random.float() * 48.0;
   var range = 100.0 - (spacing*2);
   for ( var id=0 ; id<colors.length;id ++){
@@ -32,5 +32,5 @@ BlockFill.prototype.build = function(xml){
 }
 
 BlockFill.prototype.describe = function(spacing){
-  return spacing+"BlockFill\n";
+  return spacing+"BlockFill("+this.stopCount+")\n";
 }
