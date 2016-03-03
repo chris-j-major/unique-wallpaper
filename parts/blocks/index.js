@@ -6,3 +6,4 @@ parts.addPart( require('./blockLayout') );
 parts.addPart( require('./blockShapes') );
 parts.addPart( require('./blockMask') );
 parts.addPart( require('./overlayMask') );
+parts.addPart( require('./tileBlock') );

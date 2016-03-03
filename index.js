@@ -7,6 +7,7 @@ require("./parts/blocks");
 require("./parts/palletes");
 require("./parts/shapes");
 require("./parts/overlays");
+require("./parts/tiles");
 
 
 module.exports = function (opts){
