@@ -11,7 +11,7 @@ function OverlayLines( struct , stack ){
   this.parent = stack;
   this.width = stack.width;
   this.height = stack.height;
-  var shapes = Math.floor(struct.random.range(20,90));
+  var shapes = Math.floor(struct.random.range(8,40));
   this.shapes = [];
   this.line = struct.pickPart("line");
   var colors = stack.pallete.pickColors( struct.random , Math.floor(struct.random.range(1,4)) );
