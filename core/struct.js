@@ -11,6 +11,7 @@ function Struct(key,width,height,parts){
   this.defId = 1;
   // this must be last...
   this.pallete = this.pickPart("pallete").create( this , this );
+  this.spacial = this.pickPart("spacial").create( this , this );
   this.root = this.pickPart("root").create( this , this );
 }
 Struct.prototype.addDef = function(def){

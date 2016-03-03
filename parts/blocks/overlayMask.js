@@ -11,6 +11,7 @@ module.exports = {
 function OverlayMask( struct , stack ){
   this.parent = stack;
   this.pallete = stack.pallete;
+  this.spacial = stack.spacial;
   this.width = stack.width;
   this.height = stack.height;
 

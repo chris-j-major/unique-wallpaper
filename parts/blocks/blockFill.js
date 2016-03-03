@@ -22,6 +22,7 @@ function BlockFill( struct , stack ){
   this.gradientId = struct.addDef( gradient );
   this.parent = stack;
   this.pallete = stack.pallete;
+  this.spacial = stack.spacial;
 }
 
 BlockFill.prototype.build = function(xml){

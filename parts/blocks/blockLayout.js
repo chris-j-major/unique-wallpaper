@@ -16,6 +16,7 @@ function BlockLayout( struct , stack ){
   this.width = stack.width;
   this.height = stack.height;
   this.pallete = stack.pallete;
+  this.spacial = stack.spacial;
   this.split = struct.random.choose(["H","V","HV"]);
 
   switch(this.split){
@@ -44,6 +45,7 @@ function BlockLayout( struct , stack ){
 
 BlockLayout.prototype.createSection = function( opt , struct ){
   opt.pallete = this.pallete;
+  opt.spacial = this.spacial;
   opt.inner = struct.pickPart("block").create(struct,opt);
   return opt;
 }

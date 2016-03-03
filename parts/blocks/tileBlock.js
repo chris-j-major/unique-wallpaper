@@ -8,10 +8,10 @@ module.exports = {
 }
 
 function TileBlock( struct , stack ){
-  this.pallete = stack.pallete;
   this.parent = stack;
   this.width = stack.width;
   this.height = stack.height;
+  this.spacial = stack.spacial;
   this.pallete = stack.pallete;
   this.tiles = struct.pickPart("tiles").create( struct , this );
 }

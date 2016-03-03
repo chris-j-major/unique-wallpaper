@@ -3,11 +3,11 @@ var svgParts = require("../svgParts");
 module.exports = {
   tags:["tiles"],
   create:function create(struct,stack){
-    return new SquareTiles(struct,stack);
+    return new TriangleTiles(struct,stack);
   }
 }
 
-function SquareTiles( struct , stack , opts ){
+function TriangleTiles( struct , stack , opts ){
   if ( ! opts ) opts = {};
   this.parent = stack;
   this.colors = stack.pallete.pickColors( struct.random , 2 );
@@ -24,25 +24,28 @@ function SquareTiles( struct , stack , opts ){
   this.edgeShape = struct.random.range( 0.8 , 1.2 );
 }
 
-SquareTiles.prototype.build = function(xml){
+TriangleTiles.prototype.build = function(xml){
   var g = xml.ele("g")
+  var esize = this.size * this.edgeShape;
   for ( var x = this.minx ; x<this.maxx ; x ++ ){
     var pixelX = this.midx+(x*this.size);
     for ( var y = this.miny ; y<this.maxy ; y ++ ){
       var pixelY = this.midy+(y*this.size);
-      var i = this.spacial.float(pixelX,pixelY);
+      var i = this.spacial.float(pixelX + (this.size*0.5),pixelY);
       var c = this.colors[ 0 ].lerp( this.colors[1] , i );
-      g.ele("rect")
-        .att("x",pixelX)
-        .att("y",pixelY)
-        .att("width",this.size*this.edgeShape)
-        .att("height",this.size*this.edgeShape)
+      g.ele("polygon")
+        .att("points",pixelX+","+pixelY+" "+(pixelX+esize)+","+(pixelY)+" "+(pixelX)+","+(pixelY+esize) )
+        .att("fill",c.toHex() );
+      i = this.spacial.float(pixelX ,pixelY,(this.size*0.5));
+      c = this.colors[ 0 ].lerp( this.colors[1] , i );
+      g.ele("polygon")
+        .att("points",(pixelX+esize)+","+(pixelY+esize)+" "+(pixelX+esize)+","+(pixelY)+" "+(pixelX)+","+(pixelY+esize) )
         .att("fill",c.toHex() );
     }
   }
   return g;
 }
 
-SquareTiles.prototype.describe = function(s){
-  return s+"SquareTiles\n";
+TriangleTiles.prototype.describe = function(s){
+  return s+"TriangleTiles\n";
 }

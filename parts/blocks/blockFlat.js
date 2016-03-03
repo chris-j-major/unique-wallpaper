@@ -10,6 +10,8 @@ module.exports = {
 function BlockFlat( struct , stack ){
   this.color = stack.pallete.pickColor(struct.random).toHex();
   this.parent = stack;
+  this.pallet = stack.pallete;
+  this.spacial = stack.spacial;
 }
 
 BlockFlat.prototype.build = function(xml){

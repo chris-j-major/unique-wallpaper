@@ -20,12 +20,23 @@ Color.prototype.toStopStyle = function(){
   return "stop-color:rgb("+componets.join(",")+"); stop-opacity:1; ";
 }
 
+Color.prototype.lerp = function( c2 , i ){
+  var h = innerLerp( this.h , c2.h , i);
+  var s = innerLerp( this.s , c2.s , i);
+  var l = innerLerp( this.l , c2.l , i);
+  return new Color(h,s,l);
+}
+
 function twoDigitHex(n){
   if ( n<16){
     return "0"+n.toString(16);
   }else{
     return n.toString(16);
   }
+}
+
+function innerLerp( a , b , i ){
+  return a + ((b-a)*i);
 }
 
 /**

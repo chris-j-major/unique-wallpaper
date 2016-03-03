@@ -8,6 +8,7 @@ require("./parts/palletes");
 require("./parts/shapes");
 require("./parts/overlays");
 require("./parts/tiles");
+require("./parts/spacial");
 
 
 module.exports = function (opts){
