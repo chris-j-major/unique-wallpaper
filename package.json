@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "minimist": "^1.2.0",
+    "random-seed": "^0.3.0",
     "xmlbuilder": "^4.2.1"
   }
 }

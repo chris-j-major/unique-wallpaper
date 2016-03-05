@@ -1,10 +1,24 @@
+var randomSeed = require('random-seed');
+
 function SeededRandom(seed){
-  this.seed = parseInt(seed);
+  this.seed = seed;
+  this.index = 0;
+  this.rand = new randomSeed(seed);
+}
+
+SeededRandom.prototype.jump = function(index){
+  if ( this.index > index ){
+    this.index = 0;
+    this.rand = new randomSeed(seed);
+  }
+  while ( this.index < index ){
+    this.float();
+  }
 }
 
 SeededRandom.prototype.float = function(){
-  this.seed = (this.seed * 9301 + 49297) % 233280;
-  return this.seed / 233280;
+  this.index ++;
+  return this.rand.random();
 }
 
 SeededRandom.prototype.bool = function(){
