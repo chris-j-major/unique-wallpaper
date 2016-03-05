@@ -15,10 +15,12 @@ function ScatterShapes( struct , stack ){
   this.shapes = [];
   var shape = struct.pickPart("shape");
   this.pointset = struct.pickPart("dynamic-pointset").create( struct , stack , {length:shapes} );
+  this.spacial = stack.spacial;
   var colors = stack.pallete.pickColors( struct.random , shapes );
   for ( var id=0; id<shapes;id++){
     var p = this.pointset.getPoint(id);
-    this.shapes[id] = shape.create(struct,this,{x:p.x,y:p.y,color:colors[id].toHex()});
+    var i = Math.min(Math.floor(this.spacial.float(p.x,p.y)*colors.length),colors.length-1);
+    this.shapes[id] = shape.create(struct,this,{x:p.x,y:p.y,color:colors[i].toHex()});
   }
 }
 

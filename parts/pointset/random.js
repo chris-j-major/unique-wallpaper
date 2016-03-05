@@ -13,10 +13,10 @@ function RandomPointset(struct,stack,details){
 }
 
 RandomPointset.prototype.getPoint = function(n){
-  //this.random.setPos( n );
+  var a = n*2;
   return {
-    x: (this.width) * this.random.float(),
-    y: (this.height) * this.random.float()
+    x: (this.width) * this.random.memo(a),
+    y: (this.height) * this.random.memo(a+1)
   }
 }
 RandomPointset.prototype.describe = function(s){

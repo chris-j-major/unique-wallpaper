@@ -14,8 +14,9 @@ function ScatterPointset(struct,parent,details){
 }
 
 ScatterPointset.prototype.getPoint = function(n){
-  var t = this.random.float() * Math.PI * 2;
-  var n = this.random.float();
+  var a = n*2;
+  var t = this.random.memo(a) * Math.PI * 2;
+  var n = this.random.memo(a+1);
   var d = this.dist*(n*n)
   return {
     x:this.x+(Math.sin(t)*d),

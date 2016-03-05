@@ -15,7 +15,7 @@ function Radial( struct , stack , details ){
   var theta = struct.random.float() * Math.PI * 2;
   this.dx = stack.width * struct.random.float();
   this.dy = stack.height * struct.random.float();
-  this.scale = (stack.width + stack.height) / 2;
+  this.scale = struct.random.float() * ((stack.width + stack.height)*(stack.width + stack.height)) / 2;
 }
 
 Radial.prototype.float = function(x,y){

@@ -21,7 +21,7 @@ function SquareTiles( struct , stack , opts ){
   this.miny = Math.floor(-this.midy / this.size);
   this.maxx = 1+Math.ceil((this.width-this.midx) / this.size);
   this.maxy = 1+Math.ceil((this.height-this.midy) / this.size);
-  this.edgeShape = struct.random.range( 0.8 , 1.2 );
+  this.edgeShape = struct.random.range( 0.8 , 1.0 );
 }
 
 SquareTiles.prototype.build = function(xml){

@@ -4,12 +4,22 @@ function SeededRandom(seed){
   this.seed = seed;
   this.index = 0;
   this.rand = new randomSeed(seed);
+  this.memos = {};
+}
+
+SeededRandom.prototype.memo = function(n){
+  if ( ! this.memo[n] ){
+    this.jump(n);
+    this.memo[n] = this.float();
+  }
+  return this.memo[n];
 }
 
 SeededRandom.prototype.jump = function(index){
+  index = parseInt(index);
   if ( this.index > index ){
     this.index = 0;
-    this.rand = new randomSeed(seed);
+    this.rand = new randomSeed(this.seed);
   }
   while ( this.index < index ){
     this.float();

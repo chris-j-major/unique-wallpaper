@@ -11,11 +11,13 @@ module.exports = {
 function Noise( struct , stack , details ){
   if ( ! details ) details = {};
   this.parent = stack;
+  this.w = (stack.width * 2); // used for generating indexes
   this.random = struct.random.spawn();
 }
 
 Noise.prototype.float = function(x,y){
-  return this.random.float();
+  var n = x+(y+this.w);
+  return this.random.memo(n);
 }
 
 Noise.prototype.describe = function(s){
