@@ -22,3 +22,11 @@ RandomPointset.prototype.getPoint = function(n){
 RandomPointset.prototype.describe = function(s){
   return s+"RandomPointset()\n"
 }
+
+RandomPointset.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "pointset" ){
+    return ["random","chaotic"];
+  }else{
+    return null;
+  }
+}

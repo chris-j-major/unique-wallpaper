@@ -1,5 +1,6 @@
 var svgParts = require("../svgParts");
 var Color = require("../../core/color");
+var CommonParts = require("../CommonParts");
 
 module.exports = {
   tags:["spacial"],
@@ -26,3 +27,5 @@ Combine.prototype.float = function(x,y){
 Combine.prototype.describe = function(s){
   return s+"Combien\n";
 }
+
+Combine.prototype.keySearch = CommonParts.keySearchCombine( "a" , "b" );

@@ -5,6 +5,11 @@ module.exports = {
   tags:["shape"],
   create:function create(struct,stack,details){
     return new Ring(struct,stack,details);
+  },
+  keySearch:function(key){
+    if ( key == "shape" ){
+      return "ring";
+    }
   }
 }
 
@@ -32,4 +37,12 @@ Ring.prototype.build = function(xml){
 
 Ring.prototype.describe = function(s){
   return s+"Ring\n";
+}
+
+Ring.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "shape" ){
+    return ["circle","ring"];
+  }else{
+    return null;
+  }
 }

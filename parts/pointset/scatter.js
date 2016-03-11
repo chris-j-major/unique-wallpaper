@@ -26,3 +26,11 @@ ScatterPointset.prototype.getPoint = function(n){
 ScatterPointset.prototype.describe = function(s){
   return s+"ScatterPointset("+this.x+","+this.y+","+this.dist+")\n"
 }
+
+ScatterPointset.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "pointset" ){
+    return ["scattered"];
+  }else{
+    return null;
+  }
+}

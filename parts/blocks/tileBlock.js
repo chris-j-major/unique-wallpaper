@@ -1,4 +1,5 @@
 var svgParts = require("../svgParts");
+var CommonParts = require("../CommonParts");
 
 module.exports = {
   tags:["block","root"],
@@ -23,3 +24,5 @@ TileBlock.prototype.build = function(xml){
 TileBlock.prototype.describe = function(spacing){
   return spacing+"TileBlock()\n";
 }
+
+TileBlock.prototype.keySearch = CommonParts.keySearchCombine( "tiles" );

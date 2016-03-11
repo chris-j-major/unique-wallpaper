@@ -16,7 +16,11 @@ if ( argv.key ){
   stream.write(xml);
   stream.end();
   console.log( "\n\nimage seed: "+argv.key+"\n"+image.describe() );
-  console.log( image.keySearch('colour'  ) );
+  console.log( "COLOR "+image.keySearch('colour' ) );
+  console.log( "SPACIAL "+image.keySearch('spacial' ) );
+  console.log( "LINE "+image.keySearch('line' ) );
+  console.log( "SHAPE "+image.keySearch('shape' ) );
+  console.log( "POINTSET "+image.keySearch('pointset' ) );
 }
 if ( argv.count ){
   var imageOptions = {

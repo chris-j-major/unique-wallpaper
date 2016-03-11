@@ -1,5 +1,6 @@
 var svgParts = require("../svgParts");
 var Color = require("../../core/color");
+var CommonParts = require("../CommonParts");
 
 module.exports = {
   tags:["root"], // Not block so it's not recursive...
@@ -65,3 +66,5 @@ SplitMask.prototype.build = function(xml){
 SplitMask.prototype.describe = function(s){
   return s+"SplitMask\n"+this.a.describe(" "+s)+s+"--"+this.b.describe(" "+s);
 }
+
+SplitMask.prototype.keySearch = CommonParts.keySearchCombine( "a","b" );

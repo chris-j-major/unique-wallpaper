@@ -1,5 +1,6 @@
 var svgParts = require("../svgParts");
 var Color = require("../../core/color");
+var CommonParts = require("../CommonParts");
 
 module.exports = {
   tags:["root"], // Not block so it's not recursive...
@@ -35,3 +36,5 @@ OverlayMask.prototype.build = function(xml){
 OverlayMask.prototype.describe = function(s){
   return s+"OverlayMask\n"+this.mask.describe(" "+s)+this.a.describe(" "+s)+this.b.describe(" "+s);
 }
+
+OverlayMask.prototype.keySearch = CommonParts.keySearchCombine( "a" ,"b" , "mask" );

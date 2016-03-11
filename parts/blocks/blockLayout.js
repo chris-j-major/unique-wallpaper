@@ -1,4 +1,5 @@
 var svgParts = require("../svgParts");
+var CommonParts = require("../CommonParts");
 
 Math.PHI = 1.618033988749895;
 var ONE_OVER_PHI = 1/ Math.PHI;
@@ -61,4 +62,16 @@ BlockLayout.prototype.describe = function(spacing){
   return spacing+"BlockLayout("+this.split+")\n" + this.sections.map(function(s){
     return s.inner.describe(spacing+" ")
   }).join("");
+}
+
+BlockLayout.prototype.keySearch = function(key){
+  var retval = [];
+  this.sections.forEach(function(s){
+    var n = s.inner.keySearch(key);
+    if ( n ){
+      retval = retval.concat(n);
+    }
+  });
+  if ( retval.length > 0 ) return retval;
+  else return null;
 }

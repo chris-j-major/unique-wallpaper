@@ -57,10 +57,10 @@ Struct.prototype.pickPart = function( tag ){
 }
 Struct.prototype.keySearch = function( key ){
   var result = this.pallete.keySearch( key );
-/*  if ( result ) return result;
-  result = this.spacial.keySearch( key , random );
   if ( result ) return result;
-  result = this.root.keySearch( key , random );*/
+  result = this.spacial.keySearch( key );
+  if ( result ) return result;
+  result = this.root.keySearch( key );
   return result;
 }
 

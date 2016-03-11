@@ -1,5 +1,6 @@
 var svgParts = require("../svgParts");
 var Color = require("../../core/color");
+var CommonParts = require("../CommonParts");
 
 module.exports = {
   tags:["spacial"],
@@ -30,3 +31,5 @@ Alternate.prototype.float = function(x,y){
 Alternate.prototype.describe = function(s){
   return s+"Alternate\n";
 }
+
+Alternate.prototype.keySearch = CommonParts.keySearchCombine( "a" , "b" );

@@ -27,3 +27,11 @@ Gradient.prototype.float = function(x,y){
 Gradient.prototype.describe = function(s){
   return s+"Gradient\n";
 }
+
+Gradient.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "spacial" ){
+    return ["gradient","smooth"];
+  }else{
+    return null;
+  }
+}

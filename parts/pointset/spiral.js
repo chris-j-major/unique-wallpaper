@@ -24,3 +24,11 @@ SpiralPointset.prototype.getPoint = function(n){
 SpiralPointset.prototype.describe = function(s){
   return s+"SpiralPointset("+this.x+","+this.y+","+this.theta+","+this.tdelta+","+this.dist+")\n"
 }
+
+SpiralPointset.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "pointset" ){
+    return ["spiral"];
+  }else{
+    return null;
+  }
+}

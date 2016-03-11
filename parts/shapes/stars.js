@@ -6,6 +6,13 @@ function buildShape(sides){
     tags:["shape"],
     create:function create(struct,stack,details){
       return new Star(struct,stack,sides,details);
+    },
+    keySearch:function(key){
+      if ( key == "shape" ){
+          if ( this.sides == 5 ) return ["five-sided star"];
+          if ( this.sides == 6 ) return ["six-sided star"];
+          return ["star"];
+      }
     }
   }
 }
@@ -45,4 +52,15 @@ Star.prototype.build = function(xml){
 
 Star.prototype.describe = function(s){
   return s+"Star("+this.sides+")\n";
+}
+
+Star.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "shape" ){
+
+    if ( this.sides == 5 ) return ["five-sided star"];
+    if ( this.sides == 6 ) return ["six-sided star"];
+    return ["star"];
+  }else{
+    return null;
+  }
 }

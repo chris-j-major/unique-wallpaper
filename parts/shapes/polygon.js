@@ -9,6 +9,15 @@ function buildShape(sides){
     tags:["shape"],
     create:function create(struct,stack,details){
       return new Polygon(struct,stack,sides,details);
+    },
+    keySearch:function(key){
+      if ( key == "shape" ){
+        if ( sides == 3 ) return ["triangle","three-sided polygon"];
+        if ( sides == 4 ) return ["square","four-sided polygon"];
+        if ( sides == 5 ) return ["five-sided polygon","five-sided shape"];
+        if ( sides == 6 ) return ["six-sided polygon","six-sided shape"];
+        return ["polygon shape"];
+      }
     }
   }
 }
@@ -44,4 +53,16 @@ Polygon.prototype.build = function(xml){
 
 Polygon.prototype.describe = function(s){
   return s+"Polygon("+this.sides+")\n";
+}
+
+Polygon.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "shape" ){
+    if ( this.sides == 3 ) return ["triangle","three-sided polygon"];
+    if ( this.sides == 4 ) return ["square","four-sided polygon"];
+    if ( this.sides == 5 ) return ["five-sided polygon","five-sided shape"];
+    if ( this.sides == 6 ) return ["six-sided polygon","six-sided shape"];
+    return ["polygon shape"];
+  }else{
+    return null;
+  }
 }

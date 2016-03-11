@@ -34,3 +34,11 @@ SemiGridPointset.prototype.getPoint = function(i){
 SemiGridPointset.prototype.describe = function(s){
   return s+"SemiGridPointset()\n"+this.pointSetA.describe(" "+s)+this.pointSetB.describe(" "+s);
 }
+
+SemiGridPointset.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "pointset" ){
+    return ["grid like"];
+  }else{
+    return null;
+  }
+}

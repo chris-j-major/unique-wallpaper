@@ -39,3 +39,7 @@ Swatch.prototype.build = function(xml){
 Swatch.prototype.describe = function(s){
   return s+"Swatch\n";
 }
+
+Swatch.prototype.keySearch = function(){
+  return null;
+}

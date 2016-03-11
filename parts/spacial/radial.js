@@ -28,3 +28,11 @@ Radial.prototype.float = function(x,y){
 Radial.prototype.describe = function(s){
   return s+"Radial\n";
 }
+
+Radial.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "spacial" ){
+    return ["radial","circular"];
+  }else{
+    return null;
+  }
+}

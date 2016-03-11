@@ -35,3 +35,7 @@ BlockFill.prototype.build = function(xml){
 BlockFill.prototype.describe = function(spacing){
   return spacing+"BlockFill("+this.stopCount+")\n";
 }
+
+BlockFill.prototype.keySearch = function(){
+  return null;
+}

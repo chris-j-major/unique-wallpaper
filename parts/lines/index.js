@@ -10,6 +10,11 @@ parts.addPart({
   },
   describe:function(s){
     return s+"Line(5)\n";
+  },
+  keySearch:function(key){
+    if ( key == "line" ){
+      return ["straight line","line"]
+    }
   }
 })
 
@@ -20,6 +25,11 @@ parts.addPart({
   },
   describe:function(s){
     return s+"Line(8)\n";
+  },
+  keySearch:function(key){
+    if ( key == "line" ){
+      return ["straight line","line"]
+    }
   }
 })
 
@@ -30,6 +40,11 @@ parts.addPart({
   },
   describe:function(s){
     return s+"Curve(2)\n";
+  },
+  keySearch:function(key){
+    if ( key == "line" ){
+      return ["curved line","curve"]
+    }
   }
 })
 
@@ -40,6 +55,11 @@ parts.addPart({
   },
   describe:function(s){
     return s+"Curve(8)\n";
+  },
+  keySearch:function(key){
+    if ( key == "line" ){
+      return ["curved line","curve"]
+    }
   }
 })
 
@@ -66,6 +86,14 @@ Line.prototype.describe = function(s){
   return s+"Line\n";
 }
 
+Line.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "line" ){
+    return ["lines"];
+  }else{
+    return null;
+  }
+}
+
 function Curve( struct , stack , details , width){
   if ( ! details ) details = {};
   this.parent = stack
@@ -90,4 +118,12 @@ Curve.prototype.build = function(xml){
 
 Curve.prototype.describe = function(s){
   return s+"Curve\n";
+}
+
+Curve.prototype.keySearch = function( key ){
+  if ( key.toLowerCase() == "line" ){
+    return ["curve"];
+  }else{
+    return null;
+  }
 }

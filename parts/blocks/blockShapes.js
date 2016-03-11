@@ -1,4 +1,5 @@
 var svgParts = require("../svgParts");
+var CommonParts = require("../CommonParts");
 
 module.exports = {
   tags:["block","base","root"],
@@ -30,3 +31,5 @@ BlockShapes.prototype.build = function(xml){
 BlockShapes.prototype.describe = function(s){
   return s+"BlockShapes\n" + this.inner.describe(" "+s);
 }
+
+BlockShapes.prototype.keySearch = CommonParts.keySearchCombine( "inner" );

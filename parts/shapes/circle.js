@@ -5,6 +5,11 @@ module.exports = {
   tags:["shape"],
   create:function create(struct,stack,details){
     return new Circle(struct,stack,details);
+  },
+  keySearch:function(key){
+    if ( key == "shape" ){
+      return ["circle"]
+    }
   }
 }
 
@@ -30,4 +35,12 @@ Circle.prototype.build = function(xml){
 
 Circle.prototype.describe = function(s){
   return s+"Circle\n";
+}
+
+Circle.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "shape" ){
+    return ["circle"];
+  }else{
+    return null;
+  }
 }

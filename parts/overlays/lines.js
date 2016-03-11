@@ -1,4 +1,5 @@
 var svgParts = require("../svgParts");
+var CommonParts = require("../CommonParts");
 
 module.exports = {
   tags:["overlay"],
@@ -48,3 +49,5 @@ OverlayLines.prototype.describe = function(s){
     this.pointA.describe(s+" ")+
     this.pointB.describe(s+" ");
 }
+
+OverlayLines.prototype.keySearch = CommonParts.keySearchCombine( "line", "pointA", "pointB" ,"pointC" );

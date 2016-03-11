@@ -18,3 +18,11 @@ StaticPointset.prototype.getPoint = function(n){
 StaticPointset.prototype.describe = function(s){
   return s+"StaticPointset("+this.x+","+this.y+")\n";
 }
+
+StaticPointset.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "pointset" ){
+    return ["static"];
+  }else{
+    return null;
+  }
+}

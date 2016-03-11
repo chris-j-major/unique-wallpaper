@@ -36,3 +36,11 @@ GridPointset.prototype.getPoint = function(i){
 GridPointset.prototype.describe = function(s){
   return s+"GridPointset("+this.x+"+"+this.dx+"*n,"+this.y+"+"+this.dy+"*n,)\n"
 }
+
+GridPointset.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "pointset" ){
+    return ["grid"];
+  }else{
+    return null;
+  }
+}

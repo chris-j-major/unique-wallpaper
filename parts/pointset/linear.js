@@ -25,3 +25,11 @@ LinearPointset.prototype.getPoint = function(n){
 LinearPointset.prototype.describe = function(s){
   return s+"LinearPointset("+this.x+"+"+this.dx+"*n,"+this.y+"+"+this.dy+"*n,)\n"
 }
+
+LinearPointset.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "pointset" ){
+    return ["line based","linear","straight"];
+  }else{
+    return null;
+  }
+}

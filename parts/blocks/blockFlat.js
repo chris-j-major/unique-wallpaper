@@ -24,3 +24,7 @@ BlockFlat.prototype.build = function(xml){
 BlockFlat.prototype.describe = function(spacing){
   return spacing+"BlockFlat()\n";
 }
+
+BlockFlat.prototype.keySearch = function(){
+  return null;
+}

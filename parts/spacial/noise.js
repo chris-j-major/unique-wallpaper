@@ -23,3 +23,11 @@ Noise.prototype.float = function(x,y){
 Noise.prototype.describe = function(s){
   return s+"Noise\n";
 }
+
+Noise.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "spacial" ){
+    return ["noise","random","chaos"];
+  }else{
+    return null;
+  }
+}

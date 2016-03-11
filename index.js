@@ -60,7 +60,7 @@ Builder.prototype.writeXML = function( pretty ){
   return this.getStruct().build( pretty )
 }
 Builder.prototype.keySearch = function( key  ){
-  return makeSet(this.getStruct().keySearch( key ));
+  return makeSet(this.getStruct().keySearch( key.toLowerCase() ));
 }
 
 function makeSet(a){
