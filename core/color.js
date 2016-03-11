@@ -63,9 +63,10 @@ Color.prototype.lerp = function( c2 , i ){
 }
 
 Color.prototype.dist = function(other){
-  var dh = this.h - other.h;
+  var dh = Math.abs(this.h - other.h);
   var ds = this.s - other.s;
   var dl = this.l - other.l;
+  if ( dh > 0.5) dh = 1.0 -dh; // wrap around
   dh = dh * (this.s * other.s);
   dh = dh * (0.5 - Math.abs( this.l - 0.5 ));
   return (dh*dh)+(ds*ds)+(dl*dl);

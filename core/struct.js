@@ -2,17 +2,22 @@ var SeededRandom = require("./seededRandom");
 var Color = require("./color");
 var builder = require('xmlbuilder');
 
-function Struct(rand,width,height,parts){
+function Struct(rand,width,height,parts,opts){
   this.random = new SeededRandom(rand);
   this.parts = parts;
   this.width = width;
   this.height = height;
+  this.opts = opts||{};
   this.defs = [];
   this.defId = 1;
   // this must be last...
   this.pallete = this.pickPart("pallete").create( this , this );
   this.spacial = this.pickPart("spacial").create( this , this );
   this.root = this.pickPart("root").create( this , this );
+
+  if ( this.opts.swatch ){
+    this.extra = this.pickPart("swatch").create(this , this );
+  }
 }
 Struct.prototype.addDef = function(def){
   var id = "def"+(this.defId++);
@@ -36,6 +41,9 @@ Struct.prototype.build = function( pretty ){
   }
   // now build the structyre
   this.root.build(xml);
+  if ( this.extra ){
+    this.extra.build(xml);
+  }
   // return
   return xml.end({ pretty: pretty });
 }

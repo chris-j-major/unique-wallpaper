@@ -4,7 +4,9 @@ var argv = require('minimist')(process.argv.slice(2));
 var unique = require("../");
 
 if ( argv.key ){
-  var image = unique()
+  var imageOptions = {
+    swatch:argv.swatch||false };
+  var image = unique(imageOptions)
     .start(argv.key)
     .size(argv.width||800,
           argv.height||600);
@@ -17,7 +19,9 @@ if ( argv.key ){
   console.log( image.keySearch('colour' , Math.random ) );
 }
 if ( argv.count ){
-  var u = unique();
+  var imageOptions = {
+    swatch:argv.swatch||false };
+  var u = unique( imageOptions );
   var options = { encoding: argv.encoding||'utf8' };
   for ( var n=0 ; n<parseInt(argv.count) ; n++ ){
     var image = u.start(n).size(argv.width||800,argv.height||600);

@@ -12,6 +12,7 @@ require("./parts/overlays");
 require("./parts/tiles");
 require("./parts/spacial");
 
+require("./parts/debug");
 
 module.exports = function (opts){
   if ( ! opts ) opts = {};
@@ -48,7 +49,7 @@ Builder.prototype.size = function(width,height){
 };
 Builder.prototype.getStruct = function(){
   if ( !this.struct ){
-    this.struct = this.unique.core.process(this.rand,this.width,this.height,this.unique.parts);
+    this.struct = this.unique.core.process(this.rand,this.width,this.height,this.unique.parts,this.unique.opts);
   }
   return this.struct;
 }
