@@ -2,8 +2,8 @@ var SeededRandom = require("./seededRandom");
 var Color = require("./color");
 var builder = require('xmlbuilder');
 
-function Struct(key,width,height,parts){
-  this.random = new SeededRandom(key);
+function Struct(rand,width,height,parts){
+  this.random = new SeededRandom(rand);
   this.parts = parts;
   this.width = width;
   this.height = height;
@@ -46,6 +46,14 @@ Struct.prototype.pickPart = function( tag ){
   var set = this.parts.getAllByTag( tag );
   var index = Math.floor(this.random.range(0,set.length));
   return set[index];
+}
+Struct.prototype.keySearch = function( key ){
+  var result = this.pallete.keySearch( key );
+/*  if ( result ) return result;
+  result = this.spacial.keySearch( key , random );
+  if ( result ) return result;
+  result = this.root.keySearch( key , random );*/
+  return result;
 }
 
 module.exports = Struct;

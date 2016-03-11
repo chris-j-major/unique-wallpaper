@@ -3,8 +3,6 @@ var argv = require('minimist')(process.argv.slice(2));
 
 var unique = require("../");
 
-console.log(unique().parts.counts);
-
 if ( argv.key ){
   var image = unique()
     .start(argv.key)
@@ -16,6 +14,7 @@ if ( argv.key ){
   stream.write(xml);
   stream.end();
   console.log( "\n\nimage seed: "+argv.key+"\n"+image.describe() );
+  console.log( image.keySearch('colour' , Math.random ) );
 }
 if ( argv.count ){
   var u = unique();

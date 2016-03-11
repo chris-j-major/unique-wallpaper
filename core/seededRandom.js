@@ -1,9 +1,10 @@
-var randomSeed = require('random-seed');
+var RandomSeed = require('random-seed');
 
-function SeededRandom(seed){
+function SeededRandom(rand,seed){
+  if ( typeof rand != 'function' ) throw "SeededRandom requires a function"
+  this.rand = rand;
   this.seed = seed;
   this.index = 0;
-  this.rand = new randomSeed(seed);
   this.memos = {};
 }
 
@@ -17,18 +18,22 @@ SeededRandom.prototype.memo = function(n){
 
 SeededRandom.prototype.jump = function(index){
   index = parseInt(index);
+  if ( !this.seed ){
+    console.trace("Unable to jump into a non seeded randomness");
+    return;
+  }
   if ( this.index > index ){
     this.index = 0;
-    this.rand = new randomSeed(this.seed);
+    this.rand = new RandomSeed( this.seed ).random;
   }
   while ( this.index < index ){
-    this.float();
+    this.memo[this.index] = this.float();
   }
 }
 
 SeededRandom.prototype.float = function(){
   this.index ++;
-  return this.rand.random();
+  return this.rand();
 }
 
 SeededRandom.prototype.bool = function(){
@@ -45,7 +50,8 @@ SeededRandom.prototype.choose = function(choices){
   return choices[id];
 }
 SeededRandom.prototype.spawn = function(choices){
-  return new SeededRandom( this.range(0,233280) );
+  var seed = this.range(0,0xffffffff);
+  return new SeededRandom( new RandomSeed( seed ).random , seed );
 }
 
 module.exports = SeededRandom;

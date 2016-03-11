@@ -1,11 +1,32 @@
 function Color(hue,sat,lightness){
-  this.h = hue % 1.0;
-  this.s = (sat||1.0) % 1.0;
-  this.l = (lightness||0.5) % 1.0;
+  this.h = rangeCheck(hue);
+  this.s = rangeCheck(sat,1.0);
+  this.l = rangeCheck(lightness,0.5);
 }
 
-Color.white = new Color(0.0,0.0,1.0);
-Color.black = new Color(0.0,0.0,0.0);
+function rangeCheck(n,d){
+  if ( typeof n != 'number') return d;
+  return Math.min( Math.max( n , 0.0 ) , 1.0 );
+}
+
+var namedColors = {
+  white:new Color(0.0,0.0,1.0),
+  black:new Color(0.0,0.0,0.0),
+  'dark grey':new Color(0.0,0.0,0.2),
+  'mid grey':new Color(0.0,0.0,0.5),
+  'light grey':new Color(0.0,0.0,0.8),
+  red:new Color(0.0,1.0,0.5),
+  yellow:new Color(0.1515,1.0,0.5),
+  green:new Color(0.3333,1.0,0.5),
+  turquise:new Color(0.5,1.0,0.5),
+  blue:new Color(0.6666,1.0,0.5),
+  purple:new Color(0.7575,1.0,0.5),
+};
+
+// load the named colors into the object
+for ( var id in namedColors ){
+  Color[id] = namedColors[id];
+}
 
 Color.grey = function(n){
   return new Color(0.0,0.0,n);
@@ -19,12 +40,35 @@ Color.prototype.toStopStyle = function(){
   var componets = hslToRgb(this.h,this.s,this.l);
   return "stop-color:rgb("+componets.join(",")+"); stop-opacity:1; ";
 }
+Color.prototype.toName = function(){
+  var best = Color.black;
+  var dist = 5.0;
+  var name = "black";
+  for ( var id in namedColors ){
+    var d = namedColors[id].dist(this);
+    if ( d < dist ){
+      best = namedColors[id];
+      name = id;
+      dist = d;
+    }
+  }
+  return name;
+}
 
 Color.prototype.lerp = function( c2 , i ){
   var h = innerLerp( this.h , c2.h , i);
   var s = innerLerp( this.s , c2.s , i);
   var l = innerLerp( this.l , c2.l , i);
   return new Color(h,s,l);
+}
+
+Color.prototype.dist = function(other){
+  var dh = this.h - other.h;
+  var ds = this.s - other.s;
+  var dl = this.l - other.l;
+  dh = dh * (this.s * other.s);
+  dh = dh * (0.5 - Math.abs( this.l - 0.5 ));
+  return (dh*dh)+(ds*ds)+(dl*dl);
 }
 
 function twoDigitHex(n){

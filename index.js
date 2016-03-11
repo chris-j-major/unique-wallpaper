@@ -1,6 +1,8 @@
 var parts = require('./parts');
 var core = require('./core');
 
+var RandomSeed = require('random-seed');
+
 require("./parts/pointset");
 require("./parts/lines");
 require("./parts/blocks");
@@ -30,18 +32,40 @@ function Builder(unique,key){
   this.unique = unique;
   this.width = unique.opts.width||800;
   this.height = unique.opts.height||600;
-  this.key = key;
+  if ( typeof key == 'number' ){
+    this.key = key;
+    this.rand = new RandomSeed(key).random;
+  }else{
+    this.key = null;
+    this.rand = key;
+  }
+  this.struct = null;
 }
 Builder.prototype.size = function(width,height){
   this.width = width;
   this.height = height;
   return this;
 };
+Builder.prototype.getStruct = function(){
+  if ( !this.struct ){
+    this.struct = this.unique.core.process(this.rand,this.width,this.height,this.unique.parts);
+  }
+  return this.struct;
+}
 Builder.prototype.describe = function(){
-  var struct = this.unique.core.process(this.key,this.width,this.height,this.unique.parts);
-  return struct.describe();
+  return this.getStruct().describe();
 };
 Builder.prototype.writeXML = function( pretty ){
-  var struct = this.unique.core.process(this.key,this.width,this.height,this.unique.parts);
-  return struct.build( pretty )
+  return this.getStruct().build( pretty )
+}
+Builder.prototype.keySearch = function( key  ){
+  return makeSet(this.getStruct().keySearch( key ));
+}
+
+function makeSet(a){
+  var ret = [];
+  for ( var id in a ){
+    if ( ret.indexOf(a[id]) == -1 ) ret.push(a[id]);
+  }
+  return ret;
 }

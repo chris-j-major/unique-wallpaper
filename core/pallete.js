@@ -61,4 +61,12 @@ Pallete.prototype.without = function( colors ){
   return p;
 }
 
+Pallete.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "colour" ){
+    return this.range.map( function(c){ return c.color.toName() });
+  }else{
+    return null;
+  }
+}
+
 module.exports = Pallete;
