@@ -16,7 +16,7 @@ if ( argv.key ){
   stream.write(xml);
   stream.end();
   console.log( "\n\nimage seed: "+argv.key+"\n"+image.describe() );
-  console.log( image.keySearch('colour' , Math.random ) );
+  console.log( image.keySearch('colour'  ) );
 }
 if ( argv.count ){
   var imageOptions = {

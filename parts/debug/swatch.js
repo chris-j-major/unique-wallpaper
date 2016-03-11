@@ -28,6 +28,9 @@ Swatch.prototype.build = function(xml){
       .att("width",w)
       .att("height",this.height)
       .att("fill",r.color.toHex() );
+      g.ele("text",{},r.color.toName() )
+        .att("x",x + (w*0.2))
+        .att("y",this.height * 0.4)
     x+= w;
   }
   return g;
