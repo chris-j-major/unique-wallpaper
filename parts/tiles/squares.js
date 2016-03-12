@@ -46,3 +46,13 @@ SquareTiles.prototype.build = function(xml){
 SquareTiles.prototype.describe = function(s){
   return s+"SquareTiles\n";
 }
+
+SquareTiles.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "tiles" ){
+    return ["square"];
+  }else if ( key.toLowerCase() == "shape" ){
+    return ["square"];
+  }else{
+    return null;
+  }
+}

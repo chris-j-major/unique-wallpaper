@@ -51,3 +51,13 @@ TriangleTiles.prototype.build = function(xml){
 TriangleTiles.prototype.describe = function(s){
   return s+"TriangleTiles\n";
 }
+
+TriangleTiles.prototype.keySearch = function( key , random ){
+  if ( key.toLowerCase() == "tiles" ){
+    return ["triangles"];
+  }else if ( key.toLowerCase() == "shape" ){
+    return ["triangles"];
+  }else{
+    return null;
+  }
+}

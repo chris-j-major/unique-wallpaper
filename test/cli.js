@@ -16,7 +16,7 @@ if ( argv.key ){
   stream.write(xml);
   stream.end();
   console.log( "\n\nimage seed: "+argv.key+"\n"+image.describe() );
-  console.log( "COLOR "+image.keySearch('colour' ) );
+  console.log( "COLOUR "+image.keySearch('colour' ) );
   console.log( "SPACIAL "+image.keySearch('spacial' ) );
   console.log( "LINE "+image.keySearch('line' ) );
   console.log( "SHAPE "+image.keySearch('shape' ) );
