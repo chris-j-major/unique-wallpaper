@@ -11,6 +11,7 @@ module.exports =  [3,4,5,7,11].map(function(sides){
       this.x = this.random.range(0, this.opts.width );
       this.y = this.random.range(0, this.opts.height );
       this.image.addTerm("shape-color",this.color.toName()+" "+this.part.name);
+      this.description="("+this.x+","+this.y+")"+this.size+","+this.color.toHex();
     },
     {
       buildXML:function(xml){
