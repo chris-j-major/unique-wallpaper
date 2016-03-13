@@ -53,6 +53,9 @@ Instance.prototype.createPart = function( key , indexOffset , opts ){
 Instance.prototype.choseColor = function(){
   return this.get('pallete').choseColor( this.random );
 }
+Instance.prototype.choseDifferentColor = function( c ){
+  return this.get('pallete').choseDifferentColor( c, this.random );
+}
 Instance.prototype.buildXML = function( xml ){
   g = xml;
   if ( this.xml ){

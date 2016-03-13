@@ -82,6 +82,11 @@ Color.prototype.lerp = function( c2 , i ){
   return new Color(h,s,l);
 }
 
+Color.prototype.isDifferent = function(other){
+  var dist = this.dist(other);
+  return dist > 0.2; // how different is differnt?
+}
+
 Color.prototype.dist = function(other){
   var t = hslToRgb(this.h,this.s,this.l);
   var o = hslToRgb(other.h,other.s,other.l);
