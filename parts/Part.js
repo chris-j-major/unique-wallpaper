@@ -41,7 +41,7 @@ Instance.prototype.createPart = function( key , indexOffset , opts ){
   var part = this.findPart(key);
   if ( !part ) throw("Unable to find part '"+part+"'");
   return part.create(
-    this.parent , this /* parent */ , this.source , this.index+indexOffset , opts
+    this.parent , this /* parent */ , this.source , this.index+indexOffset , opts||this.opts
   );
 }
 Instance.prototype.choseColor = function(){
