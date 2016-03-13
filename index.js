@@ -1,72 +1,46 @@
+var source = require('./source');
 var parts = require('./parts');
-var core = require('./core');
 
-var RandomSeed = require('random-seed');
+function Unique( opts ){
+  var o = opts||{};
+  this.parts =  parts[o.parts||"all"];
+}
 
-require("./parts/pointset");
-require("./parts/lines");
-require("./parts/blocks");
-require("./parts/palletes");
-require("./parts/shapes");
-require("./parts/overlays");
-require("./parts/tiles");
-require("./parts/spacial");
-
-require("./parts/debug");
-
-module.exports = function (opts){
+Unique.prototype.create = function( seed , opts ){
   if ( ! opts ) opts = {};
-
-  return new Unique(parts,core,opts);
-}
-
-function Unique(parts,core,opts){
-  this.parts = parts;
-  this.core = core;
-  this.opts = opts;
-}
-Unique.prototype.start = function(key){
-  return new Builder(this,key);
-}
-
-function Builder(unique,key){
-  this.unique = unique;
-  this.width = unique.opts.width||800;
-  this.height = unique.opts.height||600;
-  if ( typeof key == 'number' ){
-    this.key = key;
-    this.rand = new RandomSeed(key).random;
+  var s = null;
+  if ( typeof seed == 'number' ){
+    s = source.seededSource( opts.seed );
   }else{
-    this.key = null;
-    this.rand = key;
+    s = source.loopingSource( opts.data );
   }
-  this.struct = null;
-}
-Builder.prototype.size = function(width,height){
-  this.width = width;
-  this.height = height;
-  return this;
-};
-Builder.prototype.getStruct = function(){
-  if ( !this.struct ){
-    this.struct = this.unique.core.process(this.rand,this.width,this.height,this.unique.parts,this.unique.opts);
-  }
-  return this.struct;
-}
-Builder.prototype.describe = function(){
-  return this.getStruct().describe();
-};
-Builder.prototype.writeXML = function( pretty ){
-  return this.getStruct().build( pretty )
-}
-Builder.prototype.keySearch = function( key  ){
-  return makeSet(this.getStruct().keySearch( key.toLowerCase() ));
+  return new Image( s , opts.index||0 , this , opts );
 }
 
-function makeSet(a){
-  var ret = [];
-  for ( var id in a ){
-    if ( ret.indexOf(a[id]) == -1 ) ret.push(a[id]);
-  }
-  return ret;
+
+function Image( source , index , base , opts ){
+  this.source = source;
+  this.index = index;
+  this.parts = opts.parts || base.parts;
+  this.base = this.parts.find( index , source , "base" );
+  this.terms = {};
+  this.pallete = this.parts.find( index , source , "pallete" ).create( this, this , source , index+2 , opts );
+  this.root = base.create( this , this , source , index+1 , opts );
 }
+Image.prototype.get = function(n){
+  if ( n == 'pallete '){
+    return this.pallete;
+  }
+  if ( opts[n] ){
+    return opts[n];
+  }
+}
+Image.prototype.toXML = function(){
+
+}
+Image.prototype.toDescription = function(){
+
+}
+
+
+module.exports = Unique;
