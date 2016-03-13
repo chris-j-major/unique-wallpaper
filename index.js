@@ -42,6 +42,9 @@ Image.prototype.get = function(n){
   if ( n == 'pallete' ){
     return this.pallete;
   }
+  if ( n == 'parts' ){
+    return this.parts;
+  }
   if ( this.opts[n] ){
     return this.opts[n];
   }

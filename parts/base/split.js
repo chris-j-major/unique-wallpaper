@@ -29,6 +29,25 @@ new Part(
       )
     ];
   }
+),,
+new Part(
+  "splitC", /* name */
+  ["base","block"], /* types */
+  function(){
+    var blockSize = Math.min(this.opts.height,this.opts.width) * this.random.range(0.3,1.2);
+    var x = (this.opts.width - blockSize) * 0.5;
+    var y = (this.opts.height - blockSize) * 0.5;
+    var innerOpts = this.opts.extend( { width:blockSize , height:blockSize } );
+    this.image.addTerm("split","centered");
+    this.parts = this.get("parts").exclude("splitC");
+    this.subparts = [
+      this.createPart("block-simple" , 12 , this.opts ),
+      new SVGParts.Transform( this.createPart("block" , 24 , innerOpts ) ,
+        "translate("+x+" "+y+")"
+      )
+    ];
+  }
 )
+
 
 ];

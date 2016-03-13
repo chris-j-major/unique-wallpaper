@@ -25,3 +25,16 @@ PartSet.prototype.find = function( n , source , key ){
     return null;
   }
 }
+PartSet.prototype.exclude = function( terms ){
+  if ( !terms.pop ) terms = [terms];
+  var n = new PartSet([]);
+  for ( var key in this.map ){
+    n.map[key] = [];
+    for ( var id in this.map[key]){
+      if ( terms.indexOf( this.map[key][id].name ) == -1 ){
+        n.map[key].push( this.map[key][id] );
+      }
+    }
+  }
+  return n;
+}

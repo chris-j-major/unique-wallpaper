@@ -2,6 +2,7 @@ module.exports = flatten([
   require("./base/split"),
   require("./simple/blockColor"),
   require("./pallete/monochrome"),
+  require("./pallete/hightlightAndMidtone"),
   require("./pallete/bicolor"),
 ])
 

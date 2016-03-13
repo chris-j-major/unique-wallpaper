@@ -23,6 +23,7 @@ function Instance( part , image , parent , source , index , opts ){
   this.parent = parent;
   this.source = source;
   this.index = index;
+  this.partIndex = index+1;
   this.opts = opts;
   this.subparts = [];
   this.random = source.seq(index);
@@ -35,6 +36,7 @@ Instance.prototype.findPart = function( key ){
   return this.parent.findPart(key);
 }
 Instance.prototype.get = function( key ){
+  if ( this[key] ) return this[key];
   return this.parent.get(key);
 }
 Instance.prototype.createPart = function( key , indexOffset , opts ){
@@ -59,4 +61,11 @@ Instance.prototype.buildXML = function( xml ){
   this.subparts.map(function(subpart){
     subpart.buildXML( g );
   });
+}
+Instance.prototype.findPart = function( key ){
+  if ( this.parts ){
+    return this.parts.find( this.partIndex , this.source , key );
+  }else{
+    return this.parent.findPart( key );
+  }
 }
