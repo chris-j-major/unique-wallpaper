@@ -31,7 +31,7 @@ MemoSource.prototype.bool = function( n ){
   return f > 0.5;
 };
 MemoSource.prototype.choose = function( n , array ){
-  var index = Math.floor(this.range( n , 0 , array.length-1 ));
+  var index = Math.floor(this.range( n , 0 , array.length ));
   return array[index];
 };
 MemoSource.prototype.spawn = function( n ){
