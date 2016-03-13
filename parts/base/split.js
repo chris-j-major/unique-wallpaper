@@ -42,7 +42,7 @@ new Part(
     this.parts = this.get("parts").exclude("splitC");
     this.subparts = [
       this.createPart("block-simple" , 12 , this.opts ),
-      new SVGParts.Transform( this.createPart("block" , 24 , innerOpts ) ,
+      new SVGParts.Transform( this.createPart("block-simple" , 24 , innerOpts ) ,
         "translate("+x+" "+y+")"
       )
     ];

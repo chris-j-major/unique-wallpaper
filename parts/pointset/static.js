@@ -2,7 +2,7 @@ var Part = require("../Part");
 
 module.exports = new Part(
   "static", /* name */
-  ["pointset"], /* types */
+  ["pointset","pointset-static"], /* types */
   function(){
     this.x = this.random.range(0, this.opts.width );
     this.y = this.random.range(0, this.opts.height );

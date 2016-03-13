@@ -1,26 +1,30 @@
 var Part = require("../Part");
 
 module.exports = new Part(
-  "blockShapes", /* name */
+  "blockLines", /* name */
   ["block","base"], /* types */
   function(){
     this.bgcolor = this.choseColor();
     this.fgcolor = this.choseDifferentColor( this.bgcolor );
     this.fgcolor2 = this.choseDifferentColor( this.bgcolor );
-    this.shape = this.get('parts').find( this.index+5 , this.source , "shape" );
-    this.pointSet = this.createPart("pointset-dynamic" , 3 , this.opts ),
+    this.line = this.get('parts').find( this.index+6 , this.source , "line" );
+    this.pointSetA = this.createPart("pointset-dynamic" , 3 , this.opts ),
+    this.pointSetB = this.createPart("pointset" , 7 , this.opts ),
+    this.pointSetC = this.createPart("pointset" , 12 , this.opts ),
     this.image.addTerm("color",this.fgcolor.toName());
     this.image.addTerm("color",this.bgcolor.toName());
-    this.shapeCount = this.random.range(3,20);
-    this.subparts = [];
-    for ( var id=0; id<this.shapeCount ;id++ ){
+    this.lineCount = this.random.range(3,20);
+    this.subparts = [ this.pointSetA , this.pointSetB , this.pointSetC ];
+    for ( var id=0; id<this.lineCount ;id++ ){
       var l = this.random.float();
-      var ps = this.pointSet.generate(id);
-      var shapeopts = this.opts.extend( ps ).extend({
-        color:this.fgcolor.lerp(this.fgcolor2,l)
+      var lineopts = this.opts.extend({
+        color:this.fgcolor.lerp(this.fgcolor2,l),
+        a:this.pointSetA.generate(id),
+        b:this.pointSetB.generate(id),
+        c:this.pointSetC.generate(id)
       });
       this.subparts.push(
-        this.shape.create( this.image , this , this.source , id+this.index , shapeopts )
+        this.line.create( this.image , this , this.source , id+this.index , lineopts )
       );
     }
     this.description = this.bgcolor.toHex()+"/"+this.fgcolor.toHex()+"/"+this.fgcolor2.toHex();

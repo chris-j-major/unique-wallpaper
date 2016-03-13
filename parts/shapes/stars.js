@@ -1,9 +1,9 @@
 var Part = require("../Part");
 
-module.exports =  [3,4,5,7,11].map(function(sides){
+module.exports =  [5,6,7].map(function(sides){
   return new Part(
-    "polygon("+sides+")", /* name */
-    ["shape","shape-simple","polygon"], /* types */
+    "star("+sides+")", /* name */
+    ["shape","shape-simple","star"], /* types */
     function(){
       this.orient = this.opts.orient || this.random.range(0,Math.PI*2);
       this.size = this.opts.size || this.random.range(1,Math.min( this.opts.width , this.opts.height ));
@@ -16,10 +16,11 @@ module.exports =  [3,4,5,7,11].map(function(sides){
     {
       buildXML:function(xml){
         var points = [];
-        for ( var i=0 ; i <sides ; i++ ){
-          var theta = this.orient + (i * (Math.PI*2/sides));
-          var x = this.x + (Math.sin(theta)*this.size);
-          var y = this.y + (Math.cos(theta)*this.size);
+        for ( var i=0 ; i <(sides*2) ; i++ ){
+          var scale = (i%2==0)?0.4:1.1;
+          var theta = this.orient + (i * (Math.PI*2/(sides*2)));
+          var x = this.x + (Math.sin(theta)*this.size*scale);
+          var y = this.y + (Math.cos(theta)*this.size*scale);
           points.push(x+","+y)
         }
         xml.ele('polygon',{
