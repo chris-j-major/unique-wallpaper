@@ -14,7 +14,7 @@ var unique = new Unique( options );
 var fileOptions = { encoding: argv.encoding||'utf8' };
 
 if ( argv.key ){
-  var image = unique.create( argv.key );
+  var image = unique.create( parseInt(argv.key) );
 
   console.log("  "+argv.key);
   var stream = fs.createWriteStream( argv.dest || "out.svg" , fileOptions );

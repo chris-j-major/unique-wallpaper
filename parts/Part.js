@@ -8,11 +8,10 @@ function Part( name , types , createF , extras ){
   this.types = types;
   this.create = function( image , parent , source , index , opts ){
     var p = new Instance( this , image , parent , source , index , opts );
-    p.create = createF;
     for ( var n in extras ){
       p[n] = extras[n];
     }
-    p.create();
+    p.create = createF;
     return p;
   }
 }
