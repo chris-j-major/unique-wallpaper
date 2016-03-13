@@ -12,7 +12,7 @@ function Part( name , types , createF , extras ){
       p[n] = extras[n];
     }
     p.create = createF;
-    p.create();
+    p.create(); // allow extra creativity
     return p;
   }
 }
@@ -41,7 +41,11 @@ Instance.prototype.createPart = function( key , indexOffset , opts ){
   var part = this.findPart(key);
   if ( !part ) throw("Unable to find part '"+part+"'");
   return part.create(
-    this.parent , this /* parent */ , this.source , this.index+indexOffset , opts||this.opts
+    this.image ,
+    this /* parent */ ,
+    this.source ,
+    this.index+indexOffset ,
+    opts||this.opts
   );
 }
 Instance.prototype.choseColor = function(){

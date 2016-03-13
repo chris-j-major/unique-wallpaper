@@ -5,7 +5,7 @@ module.exports = new Part(
   ["block","block-simple"], /* types */
   function(){
     this.color = this.choseColor();
-    this.image.addTerm("color",this.color);
+    this.image.addTerm("color",this.color.toName());
     this.description = this.color.toHex();
   },
   {

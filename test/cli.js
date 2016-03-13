@@ -4,9 +4,9 @@ var argv = require('minimist')(process.argv.slice(2));
 var Unique = require("../");
 
 var options = {
-  swatch:argv.swatch||false,
-  width:argv.width||800,
-  height:argv.height||600  };
+  swatch:(argv.swatch||false),
+  width:(argv.width||800),
+  height:(argv.height||600)  };
 
 var unique = new Unique( options );
 
@@ -18,10 +18,18 @@ if ( argv.seed || argv.key ){
 
   console.log(" Image for: '"+(argv.key||argv.seed)+"'");
   var stream = fs.createWriteStream( argv.dest || "out.svg" , fileOptions );
-  stream.write( image.toXML() );
+  stream.write( image.toXML( argv.pretty ) );
   stream.end();
   console.log( image.toDescription() );
   console.log( image.terms );
+}else if ( argv.count ){
+  for ( var index=0; index<argv.count ; index++ ){
+    var image = unique.create( index );
+    console.log(" Generating image for: '"+(index)+"'");
+    var stream = fs.createWriteStream( argv.dest || "out/"+index+".svg" , fileOptions );
+    stream.write( image.toXML( argv.pretty ) );
+    stream.end();
+  }
 }else{
-  console.log("need to specify a key")
+  console.log("need to specify a seed , key or count")
 }

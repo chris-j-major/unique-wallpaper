@@ -9,8 +9,6 @@ function Unique( opts ){
 
 Unique.prototype.create = function( seed , opts ){
   if ( ! opts ) opts = {};
-  if ( ! opts.width ) opts.width = 800;
-  if ( ! opts.height ) opts.height = 600;
   var s = null;
   if ( typeof seed == 'number' ){
     s = source.seededSource( seed );
@@ -28,6 +26,8 @@ function Image( source , index , unique , opts ){
   this.partIndex = this.index+4;
   this.terms = {};
   this.opts = new Opts( opts );
+  if ( ! this.opts.width ) this.opts.width = 800;
+  if ( ! this.opts.height ) this.opts.height = 600;
   this.parts = opts.parts || unique.parts;
   this.defs = [];
   this.extras = [];
@@ -46,14 +46,18 @@ Image.prototype.get = function(n){
     return this.opts[n];
   }
   console.log("Unable to find a '"+n+"'")
-
   return null;
 }
 Image.prototype.findPart = function( key ){
   return this.parts.find( this.partIndex++ , this.source , key );
 }
 Image.prototype.addTerm = function( key , term ){
-  return null;
+  if ( !this.terms[key] ){
+    this.terms[key] = [];
+  }
+  if (this.terms[key].indexOf( term ) == -1 ){
+    this.terms[key].push( term );
+  }
 }
 Image.prototype.toXML = function( pretty ){
   var xml = xmlbuilder.create('svg');
@@ -88,9 +92,14 @@ function Opts(n){
   }
 }
 Opts.prototype.extend = function( n ){
-  for ( var key in n ){
-    this[key] = n[key];
+  var k = [];
+  for ( var key in this ){
+    k[key] = this[key];
   }
+  for ( var key in n ){
+    k[key] = n[key];
+  }
+  return new Opts(k);
 }
 
 module.exports = Unique;
