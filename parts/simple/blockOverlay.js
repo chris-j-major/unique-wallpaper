@@ -6,7 +6,7 @@ module.exports = new Part(
   function(){
     this.color = this.choseColor();
     this.image.addTerm("color",this.color.toName());
-    this.overlay = this.createPart("overlay" , 7 , this.opts ),
+    this.overlay = this.createPart("overlay" , 7 , this.opts.extend({ bgcolor: this.color }) ),
     this.subparts = [ this.overlay ];
     this.description = this.color.toHex();
   },

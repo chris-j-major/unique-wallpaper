@@ -7,6 +7,8 @@ module.exports = flatten([
   require("./overlay/shapes"),
   require("./shapes/polygon"),
   require("./shapes/stars"),
+  require("./shapes/ring"),
+  require("./shapes/circle"),
   require("./lines/straight"),
   require("./lines/curve"),
   require("./lines/scribble"),
