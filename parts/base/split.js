@@ -10,7 +10,7 @@ new Part(
     this.image.addTerm("split","horozontal");
     this.subparts = [
       this.createPart("block" , 12 , innerOpts ),
-      new SVGParts.Transform( this.createPart("block" , 24 , innerOpts ) ,
+      new SVGParts.Transform( this.createPart("block-interest" , 24 , innerOpts ) ,
         "translate("+(this.opts.width*0.5)+" 0)"
       )
     ];
@@ -24,7 +24,7 @@ new Part(
     this.image.addTerm("split","vertical");
     this.subparts = [
       this.createPart("block" , 12 , innerOpts ),
-      new SVGParts.Transform( this.createPart("block" , 24 , innerOpts ) ,
+      new SVGParts.Transform( this.createPart("block-interest" , 24 , innerOpts ) ,
         "translate(0 "+(this.opts.height*0.5)+")"
       )
     ];

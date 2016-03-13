@@ -54,7 +54,11 @@ Instance.prototype.choseColor = function(){
   return this.get('pallete').choseColor( this.random );
 }
 Instance.prototype.choseDifferentColor = function( c ){
-  return this.get('pallete').choseDifferentColor( c, this.random );
+  if ( c ){
+    return this.get('pallete').choseDifferentColor( c, this.random );
+  }else{
+    return this.get('pallete').choseColor( this.random );
+  }
 }
 Instance.prototype.buildXML = function( xml ){
   g = xml;

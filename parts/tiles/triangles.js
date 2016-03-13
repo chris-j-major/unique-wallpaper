@@ -1,7 +1,7 @@
 var Part = require("../Part");
 
 module.exports = new Part(
-  "squares", /* name */
+  "triangles", /* name */
   ["tiles","overlay"], /* types */
   function(){
     this.spacial = this.opts.spacial || this.createPart("spacial" , 3 , this.opts );
@@ -19,18 +19,28 @@ module.exports = new Part(
   {
     buildXML:function(xml){
       var g = xml.ele('g');
+      var size = this.size * this.edgeShape;
+      var offset = this.size * (1.0-this.edgeShape) * 0.5;
+      var halfSize = size *0.5;
       for ( var x = this.minx ; x<this.maxx ; x ++ ){
         var pixelX = this.midx+(x*this.size);
         for ( var y = this.miny ; y<this.maxy ; y ++ ){
           var pixelY = this.midy+(y*this.size);
           var i = this.random.float(pixelX,pixelY);
-          var c = this.spacial.generate( pixelX , pixelY );
-          g.ele("rect")
-            .att("x",pixelX)
-            .att("y",pixelY)
-            .att("width",this.size*this.edgeShape)
-            .att("height",this.size*this.edgeShape)
-            .att("fill",c.toHex() );
+          var co1 = this.spacial.generate( pixelX + halfSize , pixelY + halfSize  );
+          var co2 = this.spacial.generate( pixelX + size , pixelY + halfSize );
+
+          var a = pixelX+","+pixelY+" "+(pixelX+size)+","+pixelY+" "+(pixelX+halfSize)+","+(pixelY+size);
+          var b = (pixelX+size+offset)+","+pixelY+" "+(pixelX+halfSize+offset)+","+(pixelY+size)+" "+(pixelX+halfSize+size+offset)+","+(pixelY+size);
+
+          xml.ele('polygon',{
+            points:a,
+            fill:co1.toHex()
+          });
+          xml.ele('polygon',{
+            points:b,
+            fill:co2.toHex()
+          });
         }
       }
       return g;

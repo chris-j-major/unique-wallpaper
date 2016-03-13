@@ -1,26 +1,41 @@
 module.exports = flatten([
   require("./base/split"),
   require("./base/overlayMask"),
-  require("./simple/blockColor"),
-  require("./simple/blockOverlay"),
-  require("./overlay/lines"),
-  require("./overlay/shapes"),
-  require("./shapes/polygon"),
-  require("./shapes/stars"),
-  require("./shapes/ring"),
-  require("./shapes/circle"),
+
+  require("./colourset/lerp"),
+  require("./colourset/distinct"),
+  require("./colourset/alpha"),
+
   require("./lines/straight"),
   require("./lines/curve"),
   require("./lines/scribble"),
-  require("./tiles/squares"),
+
+  require("./overlay/lines"),
+  require("./overlay/shapes"),
+
+  require("./pallete/monochrome"),
+  require("./pallete/hightlightAndMidtone"),
+  require("./pallete/bicolor"),
+
   require("./pointset/static"),
   require("./pointset/linear"),
   require("./pointset/circular"),
   require("./pointset/grid"),
   require("./pointset/spiral"),
-  require("./pallete/monochrome"),
-  require("./pallete/hightlightAndMidtone"),
-  require("./pallete/bicolor"),
+
+  require("./shapes/polygon"),
+  require("./shapes/stars"),
+  require("./shapes/ring"),
+  require("./shapes/circle"),
+
+  require("./simple/blockColor"),
+  require("./simple/blockOverlay"),
+
+  require("./spacial/radial"),
+  require("./spacial/chaos"),
+
+  require("./tiles/squares"),
+  require("./tiles/triangles"),
 ])
 
 function flatten( m ){
