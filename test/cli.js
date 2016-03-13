@@ -13,10 +13,10 @@ var unique = new Unique( options );
 
 var fileOptions = { encoding: argv.encoding||'utf8' };
 
-if ( argv.key ){
-  var image = unique.create( parseInt(argv.key) );
+if ( argv.seed || argv.key ){
+  var image = unique.create( argv.key || parseInt(argv.seed) );
 
-  console.log(" Image for: '"+argv.key+"'");
+  console.log(" Image for: '"+(argv.key||argv.seed)+"'");
   var stream = fs.createWriteStream( argv.dest || "out.svg" , fileOptions );
   stream.write( image.toXML() );
   stream.end();

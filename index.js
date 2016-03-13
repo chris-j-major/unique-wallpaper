@@ -13,10 +13,10 @@ Unique.prototype.create = function( seed , opts ){
   if ( ! opts.height ) opts.height = 600;
   var s = null;
   if ( typeof seed == 'number' ){
-    s = source.seededSource( opts.seed );
+    s = source.seededSource( seed );
   }else{
-    throw("Seed is not a number "+(typeof seed))
-    s = source.loopingSource(opts.data );
+    var data = seed.split("").map( function(c){ return (c.charCodeAt(0) / 128.0)%1.0 } );
+    s = source.loopingSource( data );
   }
   return new Image( s , opts.index||0 , this , opts );
 }

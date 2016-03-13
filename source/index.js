@@ -4,11 +4,10 @@ function seededSource( id ){
   return new MemoSource( random.create(id).random );
 }
 function loopingSource( data ){
-  function f(n){
-    var p = n % data.length;
-    return n[p];
-  }
-  return new MemoSource( f );
+  console.log("Creating looping source ["+data+"]")
+  var m =  new MemoSource( null );
+  m.memo = data;
+  return m;
 }
 
 
@@ -17,10 +16,14 @@ function MemoSource( f ){
   this.f = f;
 }
 MemoSource.prototype.float = function( n ){
-  while ( n >= this.memo.length ){
-    this.memo.push( this.f() );
+  if ( this.f ){
+    while ( n >= this.memo.length ){
+      this.memo.push( this.f() );
+    }
+    return this.memo[n];
+  }else{
+    return this.memo[n % this.memo.length ];
   }
-  return this.memo[n];
 };
 MemoSource.prototype.range = function( n , min , max ){
   var f = this.float(n);
