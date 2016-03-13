@@ -12,6 +12,7 @@ module.exports = flatten([
   require("./lines/straight"),
   require("./lines/curve"),
   require("./lines/scribble"),
+  require("./tiles/squares"),
   require("./pointset/static"),
   require("./pointset/linear"),
   require("./pointset/circular"),
