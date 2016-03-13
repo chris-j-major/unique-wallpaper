@@ -84,7 +84,7 @@ Color.prototype.lerp = function( c2 , i ){
 
 Color.prototype.isDifferent = function(other){
   var dist = this.dist(other);
-  return dist > 0.2; // how different is differnt?
+  return dist > 100000; // how different is differnt?
 }
 
 Color.prototype.dist = function(other){

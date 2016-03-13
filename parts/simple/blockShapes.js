@@ -2,7 +2,7 @@ var Part = require("../Part");
 
 module.exports = new Part(
   "blockShapes", /* name */
-  ["block","base"], /* types */
+  ["block","base","block-interest"], /* types */
   function(){
     this.bgcolor = this.choseColor();
     this.fgcolor = this.choseDifferentColor( this.bgcolor );

@@ -11,6 +11,7 @@ module.exports = {
       }
     }
     if ( options.length > 0 ){
+      console.trace("Not enough different colours!");
       return r.choose( options );
     }else{
       return r.choose( this.range );
