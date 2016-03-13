@@ -1,7 +1,7 @@
 var Part = require("../Part");
 
 module.exports = new Part(
-  "linear", /* name */
+  "grid", /* name */
   ["pointset","pointset-dynamic"], /* types */
   function(){
     this.x = this.random.range(0, this.opts.width );
@@ -14,7 +14,7 @@ module.exports = new Part(
     this.y3 = this.random.range(0, this.opts.height );
     this.dx2 = (this.x3 - this.x) / (this.opts.range||20);
     this.dy2 = (this.y3 - this.y) / (this.opts.range||20);
-    this.description = this.x+"+"+this.dy+"*i"+this.dx2+"*j,"+this.y+"+"+this.dy+"*i"+this.dy2+"*j"
+    this.description = this.x+"+"+this.dy1+"*i"+this.dx2+"*j,"+this.y+"+"+this.dy1+"*i"+this.dy2+"*j"
   },
   {
     generate:function(id){

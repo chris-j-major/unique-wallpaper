@@ -20,8 +20,12 @@ if ( argv.seed || argv.key ){
   var stream = fs.createWriteStream( argv.dest || "out.svg" , fileOptions );
   stream.write( image.toXML( argv.pretty ) );
   stream.end();
-  console.log( image.toDescription() );
-  console.log( image.terms );
+  if ( argv.describe ){
+    console.log( image.toDescription() );
+  }
+  if ( argv.terms ){
+    console.log( image.terms );
+  }
 }else if ( argv.count ){
   for ( var index=0; index<argv.count ; index++ ){
     var image = unique.create( index );
@@ -29,6 +33,12 @@ if ( argv.seed || argv.key ){
     var stream = fs.createWriteStream( argv.dest || "out/"+index+".svg" , fileOptions );
     stream.write( image.toXML( argv.pretty ) );
     stream.end();
+    if ( argv.describe ){
+      console.log( image.toDescription() );
+    }
+    if ( argv.terms ){
+      console.log( image.terms );
+    }
   }
 }else{
   console.log("need to specify a seed , key or count")
