@@ -1,8 +1,10 @@
 module.exports = flatten([
   require("./base/split"),
+  require("./base/overlayMask"),
   require("./simple/blockColor"),
-  require("./simple/blockShapes"),
-  require("./simple/blockLines"),
+  require("./simple/blockOverlay"),
+  require("./overlay/lines"),
+  require("./overlay/shapes"),
   require("./shapes/polygon"),
   require("./shapes/stars"),
   require("./lines/straight"),

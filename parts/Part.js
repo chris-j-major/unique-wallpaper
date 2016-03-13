@@ -41,7 +41,7 @@ Instance.prototype.get = function( key ){
 }
 Instance.prototype.createPart = function( key , indexOffset , opts ){
   var part = this.findPart(key);
-  if ( !part ) throw("Unable to find part '"+part+"'");
+  if ( !part ) throw("Unable to find part '"+key+"'");
   return part.create(
     this.image ,
     this /* parent */ ,
@@ -58,12 +58,15 @@ Instance.prototype.choseDifferentColor = function( c ){
 }
 Instance.prototype.buildXML = function( xml ){
   g = xml;
+  // if we overide a XML funciton, butild that - this means it'll still do supparts
   if ( this.xml ){
-    g = this.xml(xml)||xml; // if this returns an element, use it.
+    g = this.xml(xml) || xml; // if this returns an element, use it.
   };
+  // now build the subparts
   this.subparts.map(function(subpart){
     subpart.buildXML( g );
   });
+  return g;
 }
 Instance.prototype.findPart = function( key ){
   if ( this.parts ){

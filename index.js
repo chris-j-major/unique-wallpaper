@@ -30,6 +30,7 @@ function Image( source , index , unique , opts ){
   if ( ! this.opts.height ) this.opts.height = 600;
   this.parts = opts.parts || unique.parts;
   this.defs = [];
+  this.defId = 1;
   this.extras = [];
   this.base = this.parts.find( index , source , "base" );
   this.pallete = this.parts.find( index+1 , source , "pallete" ).create( this, this , source , index+2 , this.opts );
@@ -48,7 +49,7 @@ Image.prototype.get = function(n){
   if ( this.opts[n] ){
     return this.opts[n];
   }
-  console.log("Unable to find a '"+n+"'")
+  console.trace("Unable to find a '"+n+"'")
   return null;
 }
 Image.prototype.findPart = function( key ){
@@ -62,6 +63,12 @@ Image.prototype.addTerm = function( key , term ){
     this.terms[key].push( term );
   }
 }
+Image.prototype.createDef = function( def ){
+  var id = "def"+(this.defId++);
+  def.id = id;
+  this.defs.push( def );
+  return id;
+}
 Image.prototype.toXML = function( pretty ){
   var xml = xmlbuilder.create('svg');
   xml.att('width', this.opts.width );
@@ -70,14 +77,17 @@ Image.prototype.toXML = function( pretty ){
   xml.att('xmlns:xlink',"http://www.w3.org/1999/xlink")
   xml.att("version","1.1");
   // build the definitions
-  var xmlDefs = xml.ele("defs");
-  for ( var id in this.defs ){
-    var def = this.defs[id];
-    var e = def.buildXML( xmlDefs );
-    e.att("id",def.id);
+  if ( this.defs.length > 0  ){
+    var xmlDefs = xml.ele("defs");
+    for ( var id in this.defs ){
+      var def = this.defs[id];
+      var e = def.buildXML( xmlDefs );
+      e.att("id",def.id);
+    }
   }
   // now build the structyre
   this.root.buildXML(xml);
+  // build extra things if requested
   if ( this.extra ) for ( var id in this.extra ){
     this.extra[id].buildXML(xml);
   }
