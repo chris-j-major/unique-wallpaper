@@ -19,23 +19,30 @@ Unique.prototype.create = function( seed , opts ){
 }
 
 
-function Image( source , index , base , opts ){
+function Image( source , index , unique , opts ){
   this.source = source;
   this.index = index;
+  this.partIndex = this.index+4;
   this.terms = {};
-  this.parts = opts.parts || base.parts;
+  this.opts = opts;
+  this.parts = opts.parts || unique.parts;
   this.base = this.parts.find( index , source , "base" );
-  this.pallete = this.parts.find( index , source , "pallete" ).create( this, this , source , index+2 , opts );
-  //this.root = base.create( this , this , source , index+1 , opts );
+  this.pallete = this.parts.find( index , source , "pallete" ).create( this, this , source , index+1 , opts );
+  this.root = this.base.create( this , this , source , index+2 , opts );
 }
 Image.prototype.get = function(n){
-  if ( n == 'pallete '){
+  if ( n == 'pallete' ){
     return this.pallete;
   }
-  if ( opts[n] ){
-    return opts[n];
+  if ( this.opts[n] ){
+    return this.opts[n];
   }
+  console.log("Unable to find a '"+n+"'")
+
   return null;
+}
+Image.prototype.findPart = function( key ){
+  return this.parts.find( this.partIndex++ , this.source , key );
 }
 Image.prototype.addTerm = function( key , term ){
   return null;
@@ -44,7 +51,7 @@ Image.prototype.toXML = function(){
   return "";
 }
 Image.prototype.toDescription = function(){
-  return "";
+  return this.root.describe("") + this.pallete.describe("");
 }
 
 

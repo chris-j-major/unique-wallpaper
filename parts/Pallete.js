@@ -1,5 +1,5 @@
 module.exports = {
-  getColor:function choseColor( r ){
-    return  r.choose( this.range );
+  choseColor:function choseColor( r ){
+    return r.choose( this.range );
   }
 };

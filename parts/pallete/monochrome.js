@@ -8,9 +8,9 @@ module.exports = new Part(
   function(){
     this.hue = this.random.float();
     this.sat = this.random.range(0.2,1.0);
-    this.ranges = [];
+    this.range = [];
     for ( var n=0; n<=1.0 ; n += 0.1){
-      this.ranges.push( Color.fromHSL(this.hue , this.sat , n ) );
+      this.range.push( Color.fromHSL(this.hue , this.sat , n ) );
     }
   },
   Pallete

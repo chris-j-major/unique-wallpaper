@@ -16,7 +16,7 @@ var fileOptions = { encoding: argv.encoding||'utf8' };
 if ( argv.key ){
   var image = unique.create( parseInt(argv.key) );
 
-  console.log("  "+argv.key);
+  console.log(" Image for: '"+argv.key+"'");
   var stream = fs.createWriteStream( argv.dest || "out.svg" , fileOptions );
   stream.write( image.toXML() );
   stream.end();
