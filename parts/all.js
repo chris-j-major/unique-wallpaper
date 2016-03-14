@@ -16,7 +16,9 @@ module.exports = flatten([
   require("./mask/halfmask"),
 
   require("./overlay/lines"),
+  require("./overlay/network"),
   require("./overlay/shapes"),
+  require("./overlay/sparkles"),
 
   require("./pallete/monochrome"),
   require("./pallete/hightlightAndMidtone"),

@@ -19,6 +19,7 @@ module.exports =  [1,2,5,12,24].map(function(width){
         xml.ele('path',{
           d:"M"+this.a.x+" "+this.a.y+" L"+this.b.x+" "+this.b.y,
           stroke:this.color.toHex(),
+          'stroke-linecap':"round",
           'stroke-width':width
         });
       }

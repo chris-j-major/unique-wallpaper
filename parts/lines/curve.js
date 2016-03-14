@@ -23,6 +23,7 @@ module.exports =  [1,2,5,12,24].map(function(width){
           d:"M"+this.a.x+" "+this.a.y+" Q"+this.b.x+" "+this.b.y+" "+this.c.x+" "+this.c.y,
           stroke:this.color.toHex(),
           'stroke-width':width,
+          'stroke-linecap':"round",
           fill:"none"
         });
       }

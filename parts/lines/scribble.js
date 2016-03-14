@@ -28,6 +28,7 @@ module.exports =  [1,5,12].map(function(width){
           d:path,
           stroke:this.color.toHex(),
           'stroke-width':width,
+          'stroke-linecap':"round",
           fill:"none"
         });
       }
