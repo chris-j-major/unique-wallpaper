@@ -94,7 +94,7 @@ Color.prototype.lerp = function( c2 , i ){
 
 Color.prototype.isDifferent = function(other){
   var dist = this.dist(other);
-  return dist > 100000; // how different is differnt?
+  return dist > 10000; // how different is differnt?
 }
 
 Color.prototype.dist = function(other){
@@ -104,7 +104,6 @@ Color.prototype.dist = function(other){
   var dg = t[1] - o[1];
   var db = t[2] - o[2];
   var alpha = (this.a * other.a)
-  //console.log( t,o,dr,dg,db)
   return alpha*((dr*dr)+(dg*dg)+(db*db));
 }
 

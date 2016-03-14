@@ -5,7 +5,7 @@ module.exports = new Part(
   ["colorset"], /* types */
   function(){
     this.a = this.choseDifferentColor( this.opts.bgcolor );
-    this.b = this.choseDifferentColor( this.opts.bgcolor );
+    this.b = this.choseDifferentColor( [this.opts.bgcolor,this.a] );
     this.description = this.a.toHex()+","+this.b.toHex();
   },
   {

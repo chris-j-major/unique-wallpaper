@@ -6,14 +6,18 @@ module.exports = {
     if ( !colors.pop ) colors = [colors];
     var options = [];
     for ( var id in this.range ){
-      if ( this.range[id].isDifferent(colors) ){
+      var simalar = false;
+      for ( var c in colors ){
+        simalar = simalar || (!this.range[id].isDifferent(colors[c]));
+      }
+      if ( !simalar ){
         options.push( this.range[id] );
       }
     }
     if ( options.length > 0 ){
-      console.trace("Not enough different colours!");
       return r.choose( options );
     }else{
+      console.trace("Not enough different colours!");
       return r.choose( this.range );
     }
   }
