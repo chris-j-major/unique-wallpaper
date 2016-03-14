@@ -1,9 +1,10 @@
 module.exports = Color;
 
-function Color(hue,sat,lightness){
+function Color(hue,sat,lightness,alpha){
   this.h = rangeCheck(hue);
   this.s = rangeCheck(sat,1.0);
   this.l = rangeCheck(lightness,0.5);
+  this.a = rangeCheck(alpha,1.0);
 }
 
 Color.fromHSL = function(h,s,l){
@@ -52,13 +53,21 @@ Color.grey = function(n){
   return new Color(0.0,0.0,n);
 }
 
+Color.prototype.alpha = function(a){
+  return new Color(this.h,this.s,this.l,a);
+}
+
 Color.prototype.toHex = function(){
   var componets = hslToRgb(this.h,this.s,this.l);
-  return "#"+twoDigitHex(componets[0])+twoDigitHex(componets[1])+twoDigitHex(componets[2])
+  if ( this.a == 1.0 ){
+    return "#"+twoDigitHex(componets[0])+twoDigitHex(componets[1])+twoDigitHex(componets[2]);
+  }else{
+    return "rgba("+componets[0]+","+componets[1]+","+componets[2]+","+this.a+")"
+  }
 }
 Color.prototype.toStopStyle = function(){
   var componets = hslToRgb(this.h,this.s,this.l);
-  return "stop-color:rgb("+componets.join(",")+"); stop-opacity:1; ";
+  return "stop-color:rgb("+componets.join(",")+"); stop-opacity:"+this.a+"; ";
 }
 Color.prototype.toName = function(){
   var best = Color.black;
@@ -79,7 +88,8 @@ Color.prototype.lerp = function( c2 , i ){
   var h = innerLerp( this.h , c2.h , i);
   var s = innerLerp( this.s , c2.s , i);
   var l = innerLerp( this.l , c2.l , i);
-  return new Color(h,s,l);
+  var a = innerLerp( this.a , c2.a , i);
+  return new Color(h,s,l,a);
 }
 
 Color.prototype.isDifferent = function(other){
@@ -93,17 +103,9 @@ Color.prototype.dist = function(other){
   var dr = t[0] - o[0];
   var dg = t[1] - o[1];
   var db = t[2] - o[2];
+  var alpha = (this.a * other.a)
   //console.log( t,o,dr,dg,db)
-  return (dr*dr)+(dg*dg)+(db*db);
-  /*
-  var dh = Math.abs(this.h - other.h);
-  var ds = this.s - other.s;
-  var dl = this.l - other.l;
-  if ( dh > 0.5) dh = 1.0 -dh; // wrap around
-  dh = dh * (this.s * other.s);
-  dh = dh * (0.5 - Math.abs( this.l - 0.5 ));
-  return (dh*dh)+(ds*ds)+(dl*dl);
-  */
+  return alpha*((dr*dr)+(dg*dg)+(db*db));
 }
 
 function twoDigitHex(n){

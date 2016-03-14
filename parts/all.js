@@ -1,14 +1,19 @@
 module.exports = flatten([
-  require("./base/split"),
+  require("./base/mirrorBlocks"),
   require("./base/overlayMask"),
+  require("./base/split"),
+  require("./base/splitMask"),
 
   require("./colourset/lerp"),
   require("./colourset/distinct"),
+  require("./colourset/chunks"),
   require("./colourset/alpha"),
 
   require("./lines/straight"),
   require("./lines/curve"),
   require("./lines/scribble"),
+
+  require("./mask/halfmask"),
 
   require("./overlay/lines"),
   require("./overlay/shapes"),
@@ -33,6 +38,7 @@ module.exports = flatten([
 
   require("./spacial/radial"),
   require("./spacial/chaos"),
+  require("./spacial/linear"),
 
   require("./tiles/squares"),
   require("./tiles/triangles"),

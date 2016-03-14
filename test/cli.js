@@ -34,7 +34,9 @@ if ( argv.seed || argv.key ){
     stream.write( image.toXML( argv.pretty ) );
     stream.end();
     if ( argv.describe ){
-      console.log( image.toDescription() );
+      var stream = fs.createWriteStream( argv.dest || "out/"+index+".txt" , fileOptions );
+      stream.write( image.toDescription( argv.pretty ) );
+      stream.end();
     }
     if ( argv.terms ){
       console.log( image.terms );

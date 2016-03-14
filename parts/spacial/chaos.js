@@ -1,8 +1,8 @@
 var Part = require("../Part");
 
 module.exports = new Part(
-  "raidal", /* name */
-  ["chaos"], /* types */
+  "chaos", /* name */
+  ["spacial"], /* types */
   function(){
     this.bgcolor = this.opts.bgcolor||this.choseColor();
     this.colorset = this.createPart("colorset" , 3 , this.opts.extend({bgcolor:this.bgcolor}) );
