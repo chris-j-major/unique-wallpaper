@@ -14,18 +14,17 @@ var unique = new Unique( options );
 var fileOptions = { encoding: argv.encoding||'utf8' };
 
 if ( argv.seed || argv.key ){
-  var image = unique.create( argv.key || parseInt(argv.seed) );
-
   console.log(" Image for: '"+(argv.key||argv.seed)+"'");
-  var stream = fs.createWriteStream( argv.dest || "out.svg" , fileOptions );
-  stream.write( image.toXML( argv.pretty ) );
-  stream.end();
+  var image = unique.create( argv.key || parseInt(argv.seed) );
   if ( argv.describe ){
     console.log( image.toDescription() );
   }
   if ( argv.terms ){
     console.log( image.terms );
   }
+  var stream = fs.createWriteStream( argv.dest || "out.svg" , fileOptions );
+  stream.write( image.toXML( argv.pretty ) );
+  stream.end();
 }else if ( argv.count ){
   for ( var index=0; index<argv.count ; index++ ){
     var image = unique.create( index );

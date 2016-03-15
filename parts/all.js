@@ -1,4 +1,5 @@
 module.exports = flatten([
+  require("./base/filter"),
   require("./base/mirrorBlocks"),
   require("./base/overlayMask"),
   require("./base/split"),
@@ -8,6 +9,9 @@ module.exports = flatten([
   require("./colourset/distinct"),
   require("./colourset/chunks"),
   require("./colourset/alpha"),
+
+//  require("./filter/roughen"),
+  require("./filter/splash"),
 
   require("./lines/straight"),
   require("./lines/curve"),

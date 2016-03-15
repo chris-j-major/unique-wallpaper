@@ -33,11 +33,11 @@ module.exports = new Part(
           var a = pixelX+","+pixelY+" "+(pixelX+size)+","+pixelY+" "+(pixelX+halfSize)+","+(pixelY+size);
           var b = (pixelX+size+offset)+","+pixelY+" "+(pixelX+halfSize+offset)+","+(pixelY+size)+" "+(pixelX+halfSize+size+offset)+","+(pixelY+size);
 
-          xml.ele('polygon',{
+          g.ele('polygon',{
             points:a,
             fill:co1.toHex()
           });
-          xml.ele('polygon',{
+          g.ele('polygon',{
             points:b,
             fill:co2.toHex()
           });
