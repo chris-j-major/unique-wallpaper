@@ -11,7 +11,6 @@ new Part(
     this.innerA = this.createPart("block-interest" , 12 , this.opts );
     this.innerB = this.createPart("block-interest" , 12 , this.opts );
 
-
     this.maskDef = this.image.createDef( new SVGParts.Mask( {} , [this.mask] ) );
     this.aDef = this.image.createDef( this.innerA );
     this.bDef = this.image.createDef( this.innerB );
