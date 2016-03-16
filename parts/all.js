@@ -1,4 +1,5 @@
 module.exports = flatten([
+  require("./base/dualfilter"),
   require("./base/filter"),
   require("./base/mirrorBlocks"),
   require("./base/overlayMask"),
@@ -8,10 +9,13 @@ module.exports = flatten([
   require("./colourset/lerp"),
   require("./colourset/distinct"),
   require("./colourset/chunks"),
-  require("./colourset/alpha"),
+//  require("./colourset/alpha"),
 
+  require("./filter/bevel"),
+  require("./filter/disolve"),
   require("./filter/roughen"),
-//  require("./filter/splash"),
+  require("./filter/sharpen"),
+  require("./filter/splash"),
 
   require("./lines/straight"),
   require("./lines/curve"),
@@ -29,10 +33,12 @@ module.exports = flatten([
   require("./pallete/bicolor"),
 
   require("./pointset/static"),
+
   require("./pointset/linear"),
   require("./pointset/circular"),
   require("./pointset/grid"),
   require("./pointset/spiral"),
+  require("./pointset/tree"),
 
   require("./shapes/polygon"),
   require("./shapes/stars"),

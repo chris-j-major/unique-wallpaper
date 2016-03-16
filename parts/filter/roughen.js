@@ -8,9 +8,6 @@ new Part(
   "roughen", /* name */
   ["filter"], /* types */
   function(){
-    //this.color1 = this.choseColor();
-    //this.image.addTerm("color",this.color1.toName());
-    //this.description = this.color1.toHex();
     this.baseFreq = this.random.range(0.1,0.001);
     if ( this.random.bool() ){
       this.baseFreq += ","+this.baseFreq; // this makes it one dimensional
