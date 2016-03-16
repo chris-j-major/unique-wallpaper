@@ -5,6 +5,7 @@ module.exports = new Part(
   ["overlay"], /* types */
   function(){
     this.bgcolor = this.opts.bgcolor||this.choseColor();
+    this.image.addTerm("color",this.bgcolor.toName());
     this.spacial = this.createPart("spacial" , 2 , this.opts.extend({bgcolor:this.bgcolor}) );
     this.pointCount = Math.floor(this.random.range(5,180));
     this.width = this.random.range(1,24);
