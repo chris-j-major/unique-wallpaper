@@ -2,7 +2,7 @@ module.exports = Color;
 
 
 function Color(hue,sat,lightness,alpha){
-  this.h = rangeCheck(hue);
+  this.h = rangeCheck(hue,0.0);
   this.s = rangeCheck(sat,1.0);
   this.l = rangeCheck(lightness,0.5);
   this.a = rangeCheck(alpha,1.0);
@@ -50,7 +50,7 @@ var colors = require("./colors")
 for ( var id in colors ){
   var name = colors[id].name;
   var hsl = rgbToHsl(colors[id].r,colors[id].g,colors[id].b);
-  namedColors[ name ] = new Color( hsl.h , hsl.s , hsl.l );
+  namedColors[ name ] = new Color( hsl[0] , hsl[1] , hsl[2] );
 }
 for ( var id in namedColors ){
   Color[id] = namedColors[id];
