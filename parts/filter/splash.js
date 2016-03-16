@@ -8,6 +8,7 @@ new Part(
   "splash", /* name */
   ["filter"], /* types */
   function(){
+    this.image.addTerm("filter","splash");
     this.color1 = this.choseColor();
     this.image.addTerm("color",this.color1.toName());
     this.color2 = this.choseColor();

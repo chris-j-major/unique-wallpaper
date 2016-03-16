@@ -5,6 +5,7 @@ module.exports = new Part(
   ["colorset"], /* types */
   function(){
     this.a = this.choseDifferentColor( this.opts.bgcolor );
+    this.image.addTerm("set-color",this.a.toName());
     this.description = this.a.toHex();
   },
   {

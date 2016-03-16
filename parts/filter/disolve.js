@@ -8,6 +8,7 @@ new Part(
   "disolve", /* name */
   ["filter"], /* types */
   function(){
+    this.image.addTerm("filter","disolve");
     this.scale = this.random.range(0.01,0.2)* Math.min(this.opts.width,this.opts.height);
     this.description = this.scale;
   },

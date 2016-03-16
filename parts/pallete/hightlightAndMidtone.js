@@ -15,6 +15,9 @@ module.exports = new Part(
     for ( var n=0; n<=0.4 ; n += 0.05){
       this.range.push( Color.fromHSL(this.hue , this.sat*0.3 , n ) );
     }
+    for ( var n in this.range ){
+      this.image.addTerm("set-color",this.range[n].toName());
+    }
     this.description = this.hue+","+this.sat
   },
   Pallete

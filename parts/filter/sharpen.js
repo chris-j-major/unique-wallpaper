@@ -8,6 +8,7 @@ new Part(
   "sharpen", /* name */
   ["filter"], /* types */
   function(){
+    this.image.addTerm("filter","sharpen");
     var neg = this.random.range(-1,-3);
     var pos = -(neg * 8)/12;
     this.matrix = [

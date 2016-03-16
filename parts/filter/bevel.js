@@ -9,6 +9,8 @@ new Part(
   ["filter"], /* types */
   function(){
     this.description = "";
+    this.image.addTerm("filter","bevel");
+    this.image.addTerm("shape","bevel");
   },
   {
     buildXML:function(xml){

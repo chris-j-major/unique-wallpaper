@@ -8,6 +8,7 @@ new Part(
   "roughen", /* name */
   ["filter"], /* types */
   function(){
+    this.image.addTerm("filter","roughen");
     this.baseFreq = this.random.range(0.1,0.001);
     if ( this.random.bool() ){
       this.baseFreq += ","+this.baseFreq; // this makes it one dimensional
