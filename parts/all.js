@@ -9,7 +9,10 @@ module.exports = flatten([
   require("./colourset/lerp"),
   require("./colourset/distinct"),
   require("./colourset/chunks"),
-//  require("./colourset/alpha"),
+  require("./colourset/alpha"),
+
+  require("./extras/swatch"),
+  require("./extras/text"),
 
   require("./filter/bevel"),
   require("./filter/disolve"),

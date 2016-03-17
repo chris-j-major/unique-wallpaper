@@ -5,6 +5,8 @@ var Unique = require("../");
 
 var options = {
   swatch:(argv.swatch||false),
+  mainText:(argv.main||null),
+  subText:(argv.sub||null),
   width:(argv.width||800),
   height:(argv.height||600)  };
 

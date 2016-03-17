@@ -4,6 +4,7 @@ var xmlbuilder = require('xmlbuilder');
 
 function Unique( opts ){
   var o = opts||{};
+  this.opts = new Opts( o );
   this.parts =  parts[o.parts||"all"];
 }
 
@@ -25,7 +26,7 @@ function Image( source , index , unique , opts ){
   this.index = index;
   this.partIndex = this.index+4;
   this.terms = {};
-  this.opts = new Opts( opts );
+  this.opts = unique.opts.extend( opts );
   if ( ! this.opts.width ) this.opts.width = 800;
   if ( ! this.opts.height ) this.opts.height = 600;
   this.parts = opts.parts || unique.parts;
@@ -35,8 +36,15 @@ function Image( source , index , unique , opts ){
   this.base = this.parts.find( index , source , "base" );
   this.pallete = this.parts.find( index+1 , source , "pallete" ).create( this, this , source , index+2 , this.opts );
   this.root = this.base.create( this , this , source , index+3 , this.opts );
-  if ( opts.swatches ){
-    this.extras.push( this.parts.find( index , source , "swatches" ).create( this, this , source , index+1 , this.opts ) );
+
+  if ( this.opts.swatch ){
+    this.extras.push( this.parts.find( index , source , "swatch" ).create( this, this , source , index+1 , this.opts ) );
+  }
+  if ( this.opts.mainText ){
+    this.extras.push( this.parts.find( index , source , "textMain" ).create( this, this , source , index+1 , this.opts.extend({text:this.opts.mainText}) ) );
+  }
+  if ( this.opts.subText ){
+    this.extras.push( this.parts.find( index , source , "textSub" ).create( this, this , source , index+1 , this.opts.extend({text:this.opts.subText}) ) );
   }
 }
 Image.prototype.get = function(n){
@@ -88,15 +96,14 @@ Image.prototype.toXML = function( pretty ){
   // now build the structyre
   this.root.buildXML(xml);
   // build extra things if requested
-  if ( this.extra ) for ( var id in this.extra ){
-    this.extra[id].buildXML(xml);
+  if ( this.extras ) for ( var id in this.extras ){
+    this.extras[id].buildXML(xml);
   }
   // return
   return xml.end({ pretty: pretty });
-  return "";
 }
 Image.prototype.toDescription = function(){
-  return this.root.describe("") + this.pallete.describe("");
+  return this.pallete.describe("") + this.root.describe("") + this.extras.map( function(e){ return e.describe("."); } ).join("");
 }
 
 function Opts(n){
