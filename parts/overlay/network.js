@@ -4,6 +4,7 @@ module.exports = new Part(
   "network", /* name */
   ["overlay"], /* types */
   function(){
+    this.image.addTerm("overlay","network");
     this.bgcolor = this.opts.bgcolor||this.choseColor();
     this.image.addTerm("color",this.bgcolor.toName());
     this.spacial = this.createPart("spacial" , 2 , this.opts.extend({bgcolor:this.bgcolor}) );

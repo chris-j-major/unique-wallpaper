@@ -6,6 +6,7 @@ module.exports = new Part(
   "monochrome", /* name */
   ["pallete"], /* types */
   function(){
+    this.image.addTerm("pallete","monochrome");
     this.hue = this.random.float();
     this.sat = this.random.range(0.2,1.0);
     this.range = [];

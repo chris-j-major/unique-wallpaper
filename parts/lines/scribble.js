@@ -5,6 +5,7 @@ module.exports =  [1,5,12].map(function(width){
     "scribble("+width+")", /* name */
     ["line","stright-line"], /* types */
     function(){
+      this.image.addTerm("line","scribble");
       this.color = this.opts.color || this.choseColor();
       this.a = this.opts.a || {
         x:this.random.range(0, this.opts.width ),

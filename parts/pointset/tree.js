@@ -5,6 +5,7 @@ new Part(
   "spiral", /* name */
   ["pointset","pointset-dynamic"], /* types */
   function(){
+    this.image.addTerm("pointset","treelike");
     this.x = this.random.range(0, this.opts.width );
     this.y = this.random.range(0, this.opts.height );
     this.r = this.random.range(50, Math.min(this.opts.width,this.opts.height)/Math.log( this.opts.range||20 ) );

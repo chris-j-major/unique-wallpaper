@@ -1,5 +1,20 @@
 var Part = require("../Part");
 
+var polygons = [
+  "n/a", // 0
+  "n/a", // 1
+  "n/a", // 2
+  "triangle", // 3
+  "square", // 4
+  "pentagon", // 5
+  "hexagon", // 6
+  "septagon", // 7
+  "octagon", // 8
+  "nonogon", // 9
+  "decagon", // 10
+  "eleven sided polygon", // 11
+]
+
 module.exports =  [3,4,5,7,11].map(function(sides){
   return new Part(
     "polygon("+sides+")", /* name */
@@ -10,7 +25,8 @@ module.exports =  [3,4,5,7,11].map(function(sides){
       this.color = this.opts.color || this.choseColor();
       this.x = this.opts.x || this.random.range(0, this.opts.width );
       this.y = this.opts.y ||this.random.range(0, this.opts.height );
-      this.image.addTerm("shape-color",this.color.toName()+" "+this.part.name);
+      this.image.addTerm("shape",polygons[sides]);
+      this.image.addTerm("shape-color",this.color.toName()+" "+polygons[sides]);
       this.description="("+this.x+","+this.y+")"+this.size+","+this.color.toHex();
     },
     {

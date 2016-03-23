@@ -2,9 +2,10 @@ var Part = require("../Part");
 
 module.exports =  [1,2,5,12,24].map(function(width){
   return new Part(
-    "straight("+width+")", /* name */
-    ["line","stright-line"], /* types */
+    "curve("+width+")", /* name */
+    ["line"], /* types */
     function(){
+      this.image.addTerm("line","curve");
       this.color = this.opts.color || this.choseColor();
       this.a = this.opts.a || {
         x:this.random.range(0, this.opts.width ),

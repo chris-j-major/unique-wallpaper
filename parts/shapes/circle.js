@@ -4,6 +4,7 @@ module.exports =  new Part(
     "circle", /* name */
     ["shape","ring"], /* types */
     function(){
+      this.image.addTerm("shape","circle");
       this.size = this.opts.size || this.random.range(1,Math.min( this.opts.width , this.opts.height ));
       this.color = this.opts.color || this.choseColor();
       this.x = this.opts.x || this.random.range(0, this.opts.width );

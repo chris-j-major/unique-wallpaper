@@ -6,6 +6,7 @@ module.exports = new Part(
   "biclor", /* name */
   ["pallete"], /* types */
   function(){
+    this.image.addTerm("pallete","two coloured");
     this.hue = this.random.float();
     this.sat = this.random.range(0.2,1.0);
     var alt = this.random.range( 1.0 , 0.6 );

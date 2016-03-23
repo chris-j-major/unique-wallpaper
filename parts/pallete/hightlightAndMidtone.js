@@ -6,6 +6,7 @@ module.exports = new Part(
   "hightlightAndMidtone", /* name */
   ["pallete"], /* types */
   function(){
+    this.image.addTerm("pallete","highlighted");
     this.hue = this.random.float();
     this.sat = this.random.range(0.6,1.0);
     this.range = [];

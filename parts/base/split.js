@@ -8,6 +8,7 @@ new Part(
   function(){
     var innerOpts = this.opts.extend( { width:(this.opts.width*0.5) } );
     this.image.addTerm("split","horozontal");
+    this.image.addTerm("concept","split");
     this.subparts = [
       this.createPart("block" , 12 , innerOpts ),
       new SVGParts.Transform( this.createPart("block-interest" , 24 , innerOpts ) ,
@@ -22,6 +23,7 @@ new Part(
   function(){
     var innerOpts = this.opts.extend( { height:(this.opts.height*0.5) } );
     this.image.addTerm("split","vertical");
+    this.image.addTerm("concept","split");
     this.subparts = [
       this.createPart("block" , 12 , innerOpts ),
       new SVGParts.Transform( this.createPart("block-interest" , 24 , innerOpts ) ,

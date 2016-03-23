@@ -5,6 +5,8 @@ module.exports = new Part(
   ["tiles","overlay"], /* types */
   function(){
     this.spacial = this.opts.spacial || this.createPart("spacial" , 3 , this.opts );
+    this.image.addTerm("shape","square");
+    this.image.addTerm("tiles","squares");
     this.size = this.opts.size || (this.opts.width+this.opts.height)*this.random.range(0.02,0.3);
     this.midx = this.opts.width * this.random.float();
     this.midy = this.opts.height * this.random.float();

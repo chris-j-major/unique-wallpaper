@@ -7,6 +7,7 @@ new Part(
   ["base"], /* types */
   function(){
     this.image.addTerm("concept","mask");
+    this.image.addTerm("concept","overlay");
     this.mask = this.createPart("overlay" , 12 , this.opts );
     this.innerA = this.createPart("block-interest" , 12 , this.opts );
     this.innerB = this.createPart("block-interest" , 12 , this.opts );

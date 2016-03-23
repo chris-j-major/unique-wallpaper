@@ -5,6 +5,7 @@ new Part(
   "semigrid", /* name */
   ["pointset","pointset-dynamic"], /* types */
   function(){
+    this.image.addTerm("pointset","grid");
     this.x = this.random.range(0, this.opts.width );
     this.y = this.random.range(0, this.opts.height );
     this.x2 = this.random.range(0, this.opts.width );

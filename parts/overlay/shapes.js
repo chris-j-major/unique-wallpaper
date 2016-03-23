@@ -4,6 +4,7 @@ module.exports = new Part(
   "shapes", /* name */
   ["overlay"], /* types */
   function(){
+    this.image.addTerm("overlay","shapes");
     this.bgcolor = this.opts.bgcolor||this.choseColor();
     this.fgcolor = this.choseDifferentColor( this.bgcolor );
     this.fgcolor2 = this.choseDifferentColor( this.bgcolor );
@@ -19,6 +20,7 @@ module.exports = new Part(
       var shapeopts = this.opts.extend( ps ).extend({
         color:this.fgcolor.lerp(this.fgcolor2,l)
       });
+      this.image.addTerm("color",shapeopts.color.toName());
       this.subparts.push(
         this.shape.create( this.image , this , this.source , id+this.index , shapeopts )
       );

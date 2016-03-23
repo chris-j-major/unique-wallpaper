@@ -6,6 +6,8 @@ module.exports = new Part(
   function(){
     this.bgcolor = this.opts.bgcolor||this.choseColor();
     this.pointCount = Math.floor(this.random.range(1,4));
+    this.image.addTerm("color",this.bgcolor.toName());
+    this.image.addTerm("spacial","radial");
     this.radius = this.random.float()*Math.min( this.opts.width , this.opts.height );
     this.colorset = this.createPart("colorset" , 3 , this.opts.extend({bgcolor:this.bgcolor}) );
     this.pointset = this.createPart("pointset-dynamic" , 3 , this.opts.extend({range:this.points}) );

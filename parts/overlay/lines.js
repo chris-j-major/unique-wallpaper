@@ -4,6 +4,7 @@ module.exports = new Part(
   "lines", /* name */
   ["overlay"], /* types */
   function(){
+    this.image.addTerm("overlay","lines");
     this.bgcolor = this.opts.bgcolor||this.choseColor();
     this.fgcolor = this.choseDifferentColor( this.bgcolor );
     this.fgcolor2 = this.choseDifferentColor( this.bgcolor );

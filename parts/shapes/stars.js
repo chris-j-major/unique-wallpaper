@@ -1,5 +1,7 @@
 var Part = require("../Part");
 
+var numbers = ["zero","one","two","three","four","five","six","seven","eight"];
+
 module.exports =  [5,6,7].map(function(sides){
   return new Part(
     "star("+sides+")", /* name */
@@ -10,7 +12,8 @@ module.exports =  [5,6,7].map(function(sides){
       this.color = this.opts.color || this.choseColor();
       this.x = this.opts.x || this.random.range(0, this.opts.width );
       this.y = this.opts.y ||this.random.range(0, this.opts.height );
-      this.image.addTerm("shape-color",this.color.toName()+" "+this.part.name);
+      this.image.addTerm("shape-color",this.color.toName()+" "+numbers[sides]+" pointed star");
+      this.image.addTerm("shape",numbers[sides]+" pointed star");
       this.description="("+this.x+","+this.y+")"+this.size+","+this.color.toHex();
     },
     {

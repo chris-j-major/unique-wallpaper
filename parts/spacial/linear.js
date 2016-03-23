@@ -5,6 +5,8 @@ module.exports = new Part(
   ["spacial"], /* types */
   function(){
     this.bgcolor = this.opts.bgcolor||this.choseColor();
+    this.image.addTerm("color",this.bgcolor.toName());
+    this.image.addTerm("spacial","linear");
     this.pointCount = Math.floor(this.random.range(1,4));
     this.radius = this.random.float()*Math.min( this.opts.width , this.opts.height );
     this.colorset = this.createPart("colorset" , 3 , this.opts.extend({bgcolor:this.bgcolor}) );

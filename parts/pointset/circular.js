@@ -4,6 +4,7 @@ module.exports = new Part(
   "circular", /* name */
   ["pointset","pointset-dynamic"], /* types */
   function(){
+    this.image.addTerm("pointset","circular");
     this.x = this.random.range(0, this.opts.width );
     this.y = this.random.range(0, this.opts.height );
     this.r = this.random.range(20, Math.min(this.opts.width,this.opts.height) );

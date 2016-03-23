@@ -6,6 +6,7 @@ new Part(
   "halfmask-horozontal", /* name */
   ["blockmask"], /* types */
   function(){
+    this.image.addTerm("mask","halfmask");
     this.x = this.random.float();
     this.description = this.x;
     var xpos = this.opts.height * this.x;
