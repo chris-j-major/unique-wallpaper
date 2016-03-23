@@ -122,4 +122,6 @@ Opts.prototype.extend = function( n ){
   return new Opts(k);
 }
 
+Unique.versionIdent = "0.1.4";
+
 module.exports = Unique;
