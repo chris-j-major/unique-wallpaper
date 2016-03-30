@@ -7,7 +7,7 @@ new Part(
   ["base"], /* types */
   function(){
     var innerOpts = this.opts.extend( { width:(this.opts.width*0.5) } );
-    this.image.addTerm("split","horozontal");
+    this.image.addTerm("split","horizontal");
     this.image.addTerm("concept","split");
     this.subparts = [
       this.createPart("block" , 12 , innerOpts ),

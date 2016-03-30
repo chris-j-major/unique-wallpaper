@@ -3,7 +3,7 @@ var Color = require("../../core/Color");
 
 module.exports = [
 new Part(
-  "halfmask-horozontal", /* name */
+  "halfmask-horizontal", /* name */
   ["blockmask"], /* types */
   function(){
     this.image.addTerm("mask","halfmask");

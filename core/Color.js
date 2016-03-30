@@ -22,27 +22,7 @@ var namedColors = {
   black:new Color(0.0,0.0,0.0),
   'dark grey':new Color(0.0,0.0,0.2),
   'mid grey':new Color(0.0,0.0,0.5),
-  'light grey':new Color(0.0,0.0,0.8),
-  red:new Color(0.0,0.8,0.5),
-  yellow:new Color(0.1515,0.8,0.5),
-  green:new Color(0.3333,0.8,0.5),
-  turquise:new Color(0.5,0.8,0.5),
-  blue:new Color(0.6666,0.8,0.5),
-  purple:new Color(0.7575,0.8,0.5),
-
-  pink:new Color(0.0,1.0,0.8),
-  'light yellow':new Color(0.1515,1.0,0.8),
-  'light green':new Color(0.3333,1.0,0.8),
-  'bright turquise':new Color(0.5,1.0,0.8),
-  'light blue':new Color(0.6666,1.0,0.8),
-  'light purple':new Color(0.7575,1.0,0.8),
-
-  'dark red':new Color(0.0,1.0,0.2),
-  'dark yellow':new Color(0.1515,1.0,0.2),
-  'dark green':new Color(0.3333,1.0,0.2),
-  'dark turquise':new Color(0.5,1.0,0.2),
-  'dark blue':new Color(0.6666,1.0,0.2),
-  'dark purple':new Color(0.7575,1.0,0.2),
+  'light grey':new Color(0.0,0.0,0.8)
 };
 
 // load the named colors into the object
